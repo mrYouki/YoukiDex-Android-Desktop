@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/mrYouki/YoukiDex/main/icon.png" width="100" alt="YoukiDEX Logo"/>
+  <img src="https://raw.githubusercontent.com/mrYouki/YoukiDex-Android-Desktop/main/icon.png" width="100" alt="YoukiDEX Logo"/>
 </p>
 
 <h1 align="center">YoukiDEX</h1>
@@ -9,13 +9,13 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/mrYouki/YoukiDex/releases">
-    <img src="https://img.shields.io/github/v/release/mrYouki/YoukiDex?style=for-the-badge" alt="Latest release"/>
+  <a href="https://github.com/mrYouki/YoukiDex-Android-Desktop/releases">
+    <img src="https://img.shields.io/github/v/release/mrYouki/YoukiDex-Android-Desktop?style=for-the-badge" alt="Latest release"/>
   </a>
-  <a href="https://github.com/mrYouki/YoukiDex/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/mrYouki/YoukiDex?style=for-the-badge" alt="License"/>
+  <a href="https://github.com/mrYouki/YoukiDex-Android-Desktop/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/mrYouki/YoukiDex-Android-Desktop?style=for-the-badge" alt="License"/>
   </a>
-  <a href="https://github.com/mrYouki/YoukiDex/releases/tag/v2.0">
+  <a href="https://github.com/mrYouki/YoukiDex-Android-Desktop/releases/tag/v2.0">
     <img src="https://img.shields.io/badge/Download-APK-brightgreen?style=for-the-badge&logo=android" alt="Download APK"/>
   </a>
   <img src="https://img.shields.io/badge/Android-7.0%2B-green?style=for-the-badge&logo=android" alt="Android"/>
@@ -37,9 +37,10 @@ adb shell appops set com.youki.dex GET_USAGE_STATS allow
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/mrYouki/YoukiDex/main/Screenshot_1.png" width="45%"/>
-  &nbsp;
-  <img src="https://raw.githubusercontent.com/mrYouki/YoukiDex/main/Screenshot_2.png" width="45%"/>
+  <img src="https://raw.githubusercontent.com/mrYouki/YoukiDex-Android-Desktop/main/Screenshot_1.png" width="90%"/>
+</p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mrYouki/YoukiDex-Android-Desktop/main/Screenshot_2.png" width="90%"/>
 </p>
 
 ---
@@ -48,8 +49,8 @@ adb shell appops set com.youki.dex GET_USAGE_STATS allow
 
 | Source | Link |
 |--------|------|
-| 📦 GitHub Releases | [Download APK](https://github.com/mrYouki/YoukiDex/releases/tag/v2.0) |
-| 🔧 Obtainium | [Add via Obtainium](https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mrYouki/YoukiDex) |
+| 📦 GitHub Releases | [Download APK](https://github.com/mrYouki/YoukiDex-Android-Desktop/releases/tag/v2.0) |
+| 🔧 Obtainium | [Add via Obtainium](https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mrYouki/YoukiDex-Android-Desktop) |
 
 ---
 
@@ -137,4 +138,3 @@ This project is an independent open-source tool and is not affiliated with or en
 ---
 
 <p align="center">Made with ❤️ by <a href="https://github.com/mrYouki">mrYouki</a></p>
-
