@@ -16,7 +16,7 @@
     <img src="https://img.shields.io/github/license/mrYouki/YoukiDex?style=for-the-badge" alt="License"/>
   </a>
   <a href="https://github.com/mrYouki/YoukiDex/releases">
-    <img src="https://img.shields.io/github/downloads/mrYouki/YoukiDex/total?style=for-the-badge" alt="Downloads"/>
+    <img license="https://img.shields.io/github/downloads/mrYouki/YoukiDex/total?style=for-the-badge" alt="Downloads"/>
   </a>
   <img src="https://img.shields.io/badge/Android-7.0%2B-green?style=for-the-badge&logo=android" alt="Android"/>
 </p>
@@ -37,9 +37,9 @@ adb shell appops set com.youki.dex GET_USAGE_STATS allow
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="assets/screenshot_1.png" width="45%"/>
+  <img src="screenshot_1.png" width="45%"/>
   &nbsp;
-  <img src="assets/screenshot_2.png" width="45%"/>
+  <img src="creenshot_2.png" width="45%"/>
 </p>
 
 ---
