@@ -15,7 +15,7 @@
   <a href="https://github.com/mrYouki/YoukiDex-Android-Desktop/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/mrYouki/YoukiDex-Android-Desktop?style=for-the-badge" alt="License"/>
   </a>
-  <a href="https://github.com/mrYouki/YoukiDex-Android-Desktop/releases/tag/v2.0">
+  <a href="https://github.com/mrYouki/YoukiDex-Android-Desktop/releases/tag/v2.1-hotfix">
     <img src="https://img.shields.io/badge/Download-APK-brightgreen?style=for-the-badge&logo=android" alt="Download APK"/>
   </a>
   <img src="https://img.shields.io/badge/Android-7.0%2B-green?style=for-the-badge&logo=android" alt="Android"/>
@@ -45,6 +45,37 @@ adb shell appops set com.youki.dex GET_USAGE_STATS allow
 
 ---
 
+## 📋 Changelog
+
+### 🔥 v2.1-hotfix
+> Critical bug fixes based on user reports
+
+**Fixed:**
+
+- **`UnsupportedOperationException: startActivityAndCollapse`** — crash on **Android 14+** when tapping the Quick Settings tile
+  > Root cause: `startActivityAndCollapse(Intent)` was deprecated and fully blocked in Android 14 (API 34). Fixed by switching to `startActivityAndCollapse(PendingIntent)` on API 34+ with a legacy fallback for older versions.
+
+- **Dock disappearing completely on launch**
+  > Root cause: `dex_mode_active` SharedPreference defaulted to `false`, causing the dock overlay to be forced `GONE` on every service start. Removed this broken logic entirely.
+
+- **Dock hiding every time an app is opened**
+  > Root cause: `LAUNCHER_PAUSED` broadcast was fired on every `LauncherActivity.onPause()`, triggering `unpinDock()` on every app switch. Broadcast removed from `onPause()`.
+
+- **Dock service shutting down when disabling via tile**
+  > Root cause: `disable_self` handler was calling `DeviceUtils.disableService()` which killed the entire Accessibility Service. Now only hides the dock UI without terminating the service.
+
+---
+
+### v2.0
+- Renamed project from SmartDock to **YoukiDEX**
+- New package name: `com.youki.dex`
+- Added Resource Monitor (CPU & RAM display)
+- Added Quick Settings Panel with brightness and volume sliders
+- Added Arabic language support
+- Toggle Minimize: tap a running app in the taskbar to hide/restore it
+
+---
+
 ## 📸 Screenshots
 
 <p align="center">
@@ -59,7 +90,7 @@ adb shell appops set com.youki.dex GET_USAGE_STATS allow
 
 | Source | Link |
 |--------|------|
-| 📦 GitHub Releases | [Download APK](https://github.com/mrYouki/YoukiDex-Android-Desktop/releases/tag/v2.0) |
+| 📦 GitHub Releases | [Download APK](https://github.com/mrYouki/YoukiDex-Android-Desktop/releases/tag/v2.1-hotfix) |
 | 🔧 Obtainium | [Add via Obtainium](https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mrYouki/YoukiDex-Android-Desktop) |
 
 ---
@@ -69,6 +100,7 @@ adb shell appops set com.youki.dex GET_USAGE_STATS allow
 - [Features](#-features)
 - [Requirements](#-requirements)
 - [Permissions](#-permissions)
+- [Known Issues](#-known-issues)
 - [FAQ](#-faq)
 - [Credits](#-credits)
 
@@ -117,19 +149,40 @@ adb shell appops set com.youki.dex GET_USAGE_STATS allow
 
 ---
 
+## ⚠️ Known Issues
+
+### RedMagic & ZTE — Floating Windows not working
+These manufacturers block Freeform/Floating Windows by default. To fix:
+1. Enable **Developer Options** (tap Build Number 7 times)
+2. In Developer Options enable:
+   - **Force activities to be resizable**
+   - **Enable freeform windows**
+3. Go to **Settings → Display → Desktop Mode** and enable it
+4. Reboot
+
+> This is a manufacturer restriction, not a bug in YoukiDEX.
+
+### Force Landscape not working on some apps
+Apps that hardcode `portrait` orientation in their own Manifest cannot be forced to landscape without root or system app privileges. This is an Android OS limitation and cannot be worked around at the app level.
+
+---
+
 ## ❓ FAQ
 
 **Q: Does it work without setting it as my default launcher?**
 Yes! YoukiDEX runs as a system overlay — your current launcher stays untouched.
 
 **Q: Why does the dock disappear after reboot?**
-Make sure the Accessibility Service is enabled and set to auto-start in your device's battery settings.
+Make sure the Accessibility Service is enabled and set to auto-start in your device's battery/power settings.
 
 **Q: WRITE_SECURE_SETTINGS isn't working?**
 Grant it via ADB:
 ```bash
 adb shell pm grant com.youki.dex android.permission.WRITE_SECURE_SETTINGS
 ```
+
+**Q: Google Play Protect blocks the APK?**
+This happens because the APK is distributed outside the Play Store. Temporarily disable Play Protect to install, then re-enable it. The app is fully open source — you can review every line of code yourself.
 
 ---
 
