@@ -15,10 +15,10 @@
   <a href="https://github.com/mrYouki/YoukiDex-Android-Desktop/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/mrYouki/YoukiDex-Android-Desktop?style=for-the-badge" alt="License"/>
   </a>
-  <a href="https://github.com/mrYouki/YoukiDex-Android-Desktop/releases/tag/2.1hotfix">
+  <a href="https://github.com/mrYouki/YoukiDex-Android-Desktop/releases/latest">
     <img src="https://img.shields.io/badge/Download-APK-brightgreen?style=for-the-badge&logo=android" alt="Download APK"/>
   </a>
-  <img src="https://img.shields.io/badge/Android-7.0%2B-green?style=for-the-badge&logo=android" alt="Android"/>
+  <img src="https://img.shields.io/badge/Android-8.0%2B-green?style=for-the-badge&logo=android" alt="Android"/>
 </p>
 
 ---
@@ -47,22 +47,49 @@ adb shell appops set com.youki.dex GET_USAGE_STATS allow
 
 ## 📋 Changelog
 
-### 🔥 2.1hotfix
+### 🔥 v2.5 — Material DEX
+> Major update — Material You improvements, Shizuku integration, window enhancements, and bug fixes
+
+**New Features:**
+
+- **Default Launcher Support** — YoukiDEX can now be set as your default home screen launcher so the desktop loads automatically on every boot
+- **Shizuku Integration** — Replaces wireless ADB with a clean privileged shell bridge. Install Shizuku once via ADB, then everything is automatic
+- **Home Screen Shortcut** — Automatically prompts to add a YoukiDEX shortcut to the home screen on first launch
+- **Centered / Floating Dock** — New KDE-style centered dock mode with bottom margin, switchable from the classic edge-pinned Windows style
+- **Fully Transparent Theme** — New theme option for a completely invisible dock background
+- **Bubble Color Customization** — Choose between Material You dynamic colors or a fully custom color for dock button bubbles, with adjustable opacity
+- **Hide Status Bar** — Hide the top Android status bar for a cleaner desktop look
+- **Built-in Shell Terminal** — Run shell commands directly inside the app using ShellServer or Shizuku
+- **Deep Shortcuts Support** — Long-press any app in the dock to access app-specific shortcuts
+- **Material You Improvements** — Better dark surface handling, improved palette refresh on wallpaper/theme change, proper alpha support across all UI elements
+
+**Bug Fixes:**
+
+- **Fullscreen Fix** — Apps set to fullscreen mode now correctly launch in fullscreen
+- **CPU / RAM Monitor Fix** — Resource monitor counter now resets correctly, fixing incorrect readings
+- **Window Performance** — `TYPE_WINDOWS_CHANGED` accessibility events debounced (250ms), eliminating dozens of redundant calls per second
+- **Notification Bubble** — Bubble color re-applied correctly after background resource changes
+- **Context Menu** — Dock app context menu now centered on screen with proper window flags
+- **Removed Arabic language support**
+
+---
+
+### 🔥 v2.1hotfix
 > Critical bug fixes based on user reports
 
 **Fixed:**
 
 - **`UnsupportedOperationException: startActivityAndCollapse`** — crash on **Android 14+** when tapping the Quick Settings tile
-  > Root cause: `startActivityAndCollapse(Intent)` was deprecated and fully blocked in Android 14 (API 34). Fixed by switching to `startActivityAndCollapse(PendingIntent)` on API 34+ with a legacy fallback for older versions.
+  > Root cause: `startActivityAndCollapse(Intent)` was deprecated and fully blocked in Android 14 (API 34). Fixed by switching to `startActivityAndCollapse(PendingIntent)` on API 34+.
 
 - **Dock disappearing completely on launch**
-  > Root cause: `dex_mode_active` SharedPreference defaulted to `false`, causing the dock overlay to be forced `GONE` on every service start. Removed this broken logic entirely.
+  > Root cause: `dex_mode_active` SharedPreference defaulted to `false`, forcing the dock overlay to `GONE` on every service start.
 
 - **Dock hiding every time an app is opened**
-  > Root cause: `LAUNCHER_PAUSED` broadcast was fired on every `LauncherActivity.onPause()`, triggering `unpinDock()` on every app switch. Broadcast removed from `onPause()`.
+  > Root cause: `LAUNCHER_PAUSED` broadcast fired on every `onPause()`, triggering `unpinDock()` on every app switch.
 
 - **Dock service shutting down when disabling via tile**
-  > Root cause: `disable_self` handler was calling `DeviceUtils.disableService()` which killed the entire Accessibility Service. Now only hides the dock UI without terminating the service.
+  > Root cause: `disable_self` handler was killing the entire Accessibility Service. Now only hides the dock UI without terminating the service.
 
 ---
 
@@ -71,7 +98,6 @@ adb shell appops set com.youki.dex GET_USAGE_STATS allow
 - New package name: `com.youki.dex`
 - Added Resource Monitor (CPU & RAM display)
 - Added Quick Settings Panel with brightness and volume sliders
-- Added Arabic language support
 - Toggle Minimize: tap a running app in the taskbar to hide/restore it
 
 ---
@@ -90,7 +116,7 @@ adb shell appops set com.youki.dex GET_USAGE_STATS allow
 
 | Source | Link |
 |--------|------|
-| 📦 GitHub Releases | [Download APK](https://github.com/mrYouki/YoukiDex-Android-Desktop/releases/tag/2.1hotfix) |
+| 📦 GitHub Releases | [Download APK](https://github.com/mrYouki/YoukiDex-Android-Desktop/releases/latest) |
 | 🔧 Obtainium | [Add via Obtainium](https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mrYouki/YoukiDex-Android-Desktop) |
 
 ---
@@ -110,6 +136,7 @@ adb shell appops set com.youki.dex GET_USAGE_STATS allow
 
 - **Floating Dock** — Persistent customizable dock as a system overlay, always on top of any app
 - **No Launcher Swap Needed** — Works on top of any existing launcher via Accessibility Service
+- **Centered or Edge Dock** — Switch between KDE-style centered floating dock and classic edge-pinned dock
 - **Hot Corners** — Trigger actions by moving to any corner of the screen
 - **Freeform Window Support** — Launch apps in resizable floating windows
 - **App Drawer** — Full-featured app list with search and sorting
@@ -120,8 +147,12 @@ adb shell appops set com.youki.dex GET_USAGE_STATS allow
 - **Custom Profile** — Set your own username and profile picture in the app drawer
 - **Keyboard Shortcuts** — Hardware keyboard support for power users
 - **Multi-Display Support** — Works across multiple connected screens
-- **Appearance Theming** — Customize colors, transparency, size, and layout
+- **Appearance Theming** — Customize colors, transparency, and layout — including a fully transparent mode
+- **Bubble Customization** — Material You dynamic colors or a fully custom color with adjustable opacity
+- **Shizuku Integration** — Privileged shell access without keeping ADB connected
+- **Built-in Shell Terminal** — Run shell commands directly inside the app
 - **Sound Events** — Optional audio feedback for dock interactions
+- **Resource Monitor** — Live CPU and RAM usage in the taskbar
 
 ---
 
@@ -129,7 +160,7 @@ adb shell appops set com.youki.dex GET_USAGE_STATS allow
 
 | Requirement | Value |
 |-------------|-------|
-| Minimum Android | 7.0 (API 24) |
+| Minimum Android | 8.0 (API 26) |
 | Target Android | 14 (API 34) |
 | Language | Kotlin 1.9.20 |
 | Build Tool | Gradle |
@@ -163,7 +194,7 @@ These manufacturers block Freeform/Floating Windows by default. To fix:
 > This is a manufacturer restriction, not a bug in YoukiDEX.
 
 ### Force Landscape not working on some apps
-Apps that hardcode `portrait` orientation in their own Manifest cannot be forced to landscape without root or system app privileges. This is an Android OS limitation and cannot be worked around at the app level.
+Apps that hardcode `portrait` orientation cannot be forced to landscape without root or system app privileges. This is an Android OS limitation.
 
 ---
 
@@ -181,8 +212,32 @@ Grant it via ADB:
 adb shell pm grant com.youki.dex android.permission.WRITE_SECURE_SETTINGS
 ```
 
+**Q: What is Shizuku and do I need it?**
+Shizuku gives YoukiDEX privileged shell access without keeping ADB connected wirelessly. You only need ADB once to start Shizuku, then it handles everything automatically. Optional but recommended.
+
+**Q: Why isn't the full source code available on GitHub?**
+This project is developed entirely on a mobile phone with limited resources. Uploading and managing a full codebase from a phone isn't practical, so only what's possible is shared. The project is still open source at heart — contributions and feedback are always welcome.
+
 **Q: Google Play Protect blocks the APK?**
 This happens because the APK is distributed outside the Play Store. Temporarily disable Play Protect to install, then re-enable it. The app is fully open source — you can review every line of code yourself.
+
+---
+
+## 🚫 Not Planned
+
+These features will **not** be added to YoukiDEX:
+
+| Feature | Reason |
+|---------|--------|
+| 🌫️ Blur / Background blur effects | Android blocks real-time blur on overlay windows without system-level privileges |
+| 🏪 Google Play Store release | The app requires sensitive permissions that Google does not allow on the Play Store |
+| 🍎 iOS / iPadOS support | Completely different OS — not possible |
+| ☁️ Cloud sync for settings | A local Backup/Restore system already exists and is sufficient |
+| 👥 Multi-user support | Extremely complex and severely limited by Android system-level permissions |
+| 💻 Built-in Terminal | *(Planned, not yet implemented)* |
+| 📋 Task Manager | *(Planned, not yet implemented)* |
+| 🧩 Widget support in the dock | *(Planned, not yet implemented)* |
+| 📁 Built-in File Manager | *(Planned, not yet implemented)* |
 
 ---
 
@@ -200,4 +255,4 @@ This project is an independent open-source tool and is not affiliated with or en
 
 ---
 
-<p align="center">Made with ❤️ by <a href="https://github.com/mrYouki">mrYouki</a></p>
+<p align="center">Made with by <a href="https://github.com/mrYouki">mrYouki</a></p>
