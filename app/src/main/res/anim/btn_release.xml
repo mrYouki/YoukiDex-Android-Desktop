@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- POLISH: spring-like overshoot release — Material "expressive" feel -->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shareInterpolator="false">
+    <scale
+        android:fromXScale="0.82"
+        android:toXScale="1.0"
+        android:fromYScale="0.82"
+        android:toYScale="1.0"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:duration="300"
+        android:interpolator="@android:anim/overshoot_interpolator" />
+    <alpha
+        android:fromAlpha="0.60"
+        android:toAlpha="1.0"
+        android:duration="180"
+        android:interpolator="@android:anim/decelerate_interpolator" />
+</set>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Arabic is RTL — this ensures layout mirroring -->
+    <string name="locale_direction" translatable="false">rtl</string>
+</resources>

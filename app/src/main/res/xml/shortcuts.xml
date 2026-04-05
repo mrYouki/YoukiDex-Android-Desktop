@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        اختصار سطح المكتب — يظهر لما تضغط طويلاً على أيقونة التطبيق في الشاشة الرئيسية.
+        يفتح DesktopOverlayActivity مباشرةً (بدون HOME conflict).
+    -->
+    <shortcut
+        android:shortcutId="open_desktop"
+        android:enabled="true"
+        android:icon="@mipmap/ic_youki"
+        android:shortcutShortLabel="@string/app_name"
+        android:shortcutLongLabel="@string/app_name" >
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.youki.dex"
+            android:targetClass="com.youki.dex.activities.DesktopOverlayActivity" />
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+
+</shortcuts>

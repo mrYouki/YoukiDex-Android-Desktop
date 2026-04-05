@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- POLISH: faster press (50ms) with clean accelerate curve — no lag feeling -->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shareInterpolator="false">
+    <scale
+        android:fromXScale="1.0"
+        android:toXScale="0.82"
+        android:fromYScale="1.0"
+        android:toYScale="0.82"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:duration="55"
+        android:interpolator="@android:anim/accelerate_interpolator" />
+    <alpha
+        android:fromAlpha="1.0"
+        android:toAlpha="0.60"
+        android:duration="55"
+        android:interpolator="@android:anim/accelerate_interpolator" />
+</set>

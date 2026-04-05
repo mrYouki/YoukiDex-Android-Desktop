@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shareInterpolator="false">
+    <!-- يطلع من الأسفل زي Windows -->
+    <translate
+        android:fromYDelta="60%"
+        android:toYDelta="0%"
+        android:duration="280"
+        android:interpolator="@android:anim/decelerate_interpolator" />
+    <!-- يكبر من الصغير للعادي -->
+    <scale
+        android:fromXScale="0.92"
+        android:toXScale="1.0"
+        android:fromYScale="0.92"
+        android:toYScale="1.0"
+        android:pivotX="50%"
+        android:pivotY="100%"
+        android:duration="280"
+        android:interpolator="@android:anim/decelerate_interpolator" />
+    <!-- يظهر تدريجياً -->
+    <alpha
+        android:fromAlpha="0.0"
+        android:toAlpha="1.0"
+        android:duration="200"
+        android:interpolator="@android:anim/decelerate_interpolator" />
+</set>

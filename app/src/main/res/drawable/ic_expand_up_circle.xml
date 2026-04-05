@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Win11 Fluent: سهم لأعلى داخل دائرة — زر الإشعارات الافتراضي -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp"
+    android:viewportWidth="24" android:viewportHeight="24">
+    <!-- دائرة -->
+    <path android:fillColor="#00000000"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="2"
+        android:pathData="M12,2 A10,10 0,1 1,12 22 A10,10 0,0 1,12 2Z"/>
+    <!-- سهم لأعلى -->
+    <path android:fillColor="#00000000"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="2.2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M7.5,14 L12,9 L16.5,14"/>
+</vector>

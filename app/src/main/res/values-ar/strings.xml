@@ -1,0 +1,399 @@
+<resources>
+
+    <!-- General -->
+    <string name="app_name">Youki DEX</string>
+    <string name="none">لا شيء</string>
+    <string name="move">نقل</string>
+    <string name="ok">موافق</string>
+    <string name="cancel">إلغاء</string>
+
+    <!-- Layouts dialog -->
+    <string name="choose_dock_layout">اختر تخطيط الشريط</string>
+    <string name="phone">هاتف</string>
+    <string name="tablet">جهاز لوحي</string>
+
+    <!-- Permissions dialog -->
+    <string name="manage_permissions">إدارة الأذونات</string>
+    <string name="required">مطلوب</string>
+    <string name="optional">اختياري</string>
+    <string name="display_over_other_apps">العرض فوق التطبيقات الأخرى</string>
+    <string name="display_over_other_apps_desc">مطلوب لعرض الشريط، لا يمكن تشغيل الخدمة بدونه</string>
+    <string name="accessibility_service">خدمة إمكانية الوصول</string>
+    <string name="accessibility_service_desc">تُستخدم لتشغيل وإيقاف الشريط. تحتاج للإذن أعلاه. إذا ظهرت رسالة <b>إعداد مقيّد</b> اضغط زر المساعدة</string>
+    <string name="recent_apps">التطبيقات الأخيرة</string>
+    <string name="recent_apps_desc">يتيح عرض التطبيقات الأخيرة في الشريط</string>
+    <string name="notification_access">الوصول إلى الإشعارات</string>
+    <string name="notification_access_desc">يُستخدم لعرض الإشعارات. إذا ظهرت رسالة <b>إعداد مقيّد</b> اضغط زر المساعدة</string>
+    <string name="device_administrator">مسؤول الجهاز</string>
+    <string name="device_administrator_desc">يُستخدم لقفل الشاشة. قم بتعطيله قبل إلغاء التثبيت</string>
+    <string name="storage">التخزين</string>
+    <string name="storage_desc">يُستخدم لتغيير أيقونة القائمة وأصوات الأحداث</string>
+    <string name="overlays_in_settings">السماح بالتراكب على الإعدادات</string>
+    <string name="overlays_in_settings_desc">يُستخدم لإبقاء الشريط مرئياً أثناء فتح تطبيق الإعدادات. يجب تفعيله من خيارات المطوّر</string>
+    <string name="write_secure">كتابة الإعدادات الآمنة</string>
+    <string name="write_secure_desc">مطلوب للإعدادات المتقدمة. إذن خاص يجب منحه عبر root أو adb بتنفيذ: \npm grant com.youki.dex android.permission.WRITE_SECURE_SETTINGS</string>
+    <string name="default_launcher">تعيين كمشغّل افتراضي</string>
+    <string name="default_launcher_desc">اجعل Youki DEX مشغّل الشاشة الرئيسية الافتراضي ليُحمَّل سطح المكتب تلقائياً.</string>
+    <string name="shizuku">Shizuku</string>
+    <string name="shizuku_desc">يمنح Shizuku صلاحيات الشل المتقدمة دون ADB لاسلكي. ثبّت Shizuku من متجر التطبيقات، شغّله مرة عبر ADB أو التصحيح اللاسلكي، ثم امنح الإذن هنا.</string>
+    <string name="shizuku_open">فتح Shizuku</string>
+    <string name="shell_terminal">طرفية Youki Shell</string>
+    <string name="shell_terminal_desc">طرفية مدمجة لتشغيل أوامر الشل مباشرة داخل التطبيق باستخدام Root أو Shizuku.</string>
+    <string name="manage">إدارة…</string>
+    <string name="grant">منح</string>
+    <string name="enable">تفعيل</string>
+    <string name="disable">تعطيل</string>
+
+    <!-- Appearance page -->
+    <string name="appearance">المظهر</string>
+    <string name="look_and_feel">الشكل والأسلوب</string>
+    <string name="theme_title">سمة الشريط</string>
+    <string name="dark">داكن</string>
+    <string name="black">أسود</string>
+    <string name="transparent">شفاف</string>
+    <string name="material_u">Material U</string>
+    <string name="red">أحمر</string>
+    <string name="custom">مخصص</string>
+    <string name="theme_main_color_title">اللون الرئيسي</string>
+    <string name="theme_main_color_summary">يحدد اللون الرئيسي لخلفيات العناصر</string>
+    <string name="choose_color">اختر لوناً</string>
+    <string name="transparency">الشفافية</string>
+    <string name="invalid_color">لون غير صالح</string>
+    <string name="dock_layout">تخطيط الشريط</string>
+    <string name="wallpaper">الخلفية</string>
+    <string name="presets">الإعدادات المسبقة</string>
+    <string name="icon_shape_title">شكل الأيقونة</string>
+    <string name="circle">دائري</string>
+    <string name="squircle">مربع مدوّر</string>
+    <string name="system">النظام</string>
+    <string name="round_dock">زوايا مدوّرة للشريط</string>
+    <string name="single_line_labels">سطر واحد لأسماء التطبيقات</string>
+    <string name="tint_indicators_title">تلوين مؤشرات التشغيل</string>
+
+    <!-- App menu page -->
+    <string name="app_menu">قائمة التطبيقات</string>
+    <string name="menu">القائمة</string>
+    <string name="menu_icon_uri_title">أيقونة القائمة</string>
+    <string name="restore_menu_icon_title">استعادة أيقونة القائمة الافتراضية</string>
+    <string name="app_menu_fullscreen_title">فتح قائمة التطبيقات بملء الشاشة</string>
+    <string name="app_menu_height_title">ارتفاع قائمة التطبيقات</string>
+    <string name="app_menu_width_title">عرض قائمة التطبيقات</string>
+    <string name="num_columns_title">عدد الأعمدة</string>
+    <string name="center_app_menu">توسيط قائمة التطبيقات</string>
+    <string name="app_launch">تشغيل التطبيق</string>
+    <string name="launch_mode_title">وضع التشغيل الافتراضي</string>
+    <string name="standard">عادي</string>
+    <string name="maximized">مكبّر</string>
+    <string name="portrait">عمودي</string>
+    <string name="fullscreen">ملء الشاشة</string>
+    <string name="remember_launch_mode_title">تذكّر وضع التشغيل</string>
+    <string name="remember_launch_mode_summary">تذكّر آخر وضع تشغيل مستخدم لكل تطبيق</string>
+    <string name="launch_games_fullscreen_title">تشغيل الألعاب بملء الشاشة</string>
+    <string name="launch_games_fullscreen_summary">تشغيل التطبيقات المكتشفة كألعاب بملء الشاشة افتراضياً</string>
+    <string name="launch_new_instance_secondary_title">نافذة جديدة على الشاشات الثانوية</string>
+    <string name="launch_new_instance_secondary_summary">إنشاء نافذة جديدة عند التشغيل على الشاشات الثانوية إذا دعم التطبيق ذلك</string>
+    <string name="user_info">معلومات المستخدم</string>
+    <string name="user_name">الاسم</string>
+    <string name="user_avatar">الصورة الرمزية</string>
+    <string name="allow_app_hiding">السماح بإخفاء التطبيقات</string>
+    <string name="hidden_apps">التطبيقات المخفية</string>
+    <string name="choose_apps">اختر التطبيقات</string>
+
+    <!-- Dock page -->
+    <string name="dock">الشريط</string>
+    <string name="navigation">التنقل</string>
+    <string name="enable_apps_btn">قائمة التطبيقات</string>
+    <string name="enable_nav_back_title">رجوع</string>
+    <string name="enable_nav_home_title">الرئيسية</string>
+    <string name="enable_nav_recents_title">الأخيرة</string>
+    <string name="long_press_action">إجراء الضغط المطوّل</string>
+    <string name="tap_to_set_long_action">اضغط لضبط إجراء الضغط المطوّل/التحويم</string>
+    <string name="enable_nav_assist_title">المساعد</string>
+    <string name="quick_settings_panel">لوحة الإعدادات السريعة</string>
+    <string name="resource_monitor_title">مراقب الموارد</string>
+    <string name="resource_monitor_summary">عرض استخدام CPU وRAM في شريط المهام</string>
+    <string name="always_floating_title">فتح كنافذة عائمة دائماً</string>
+    <string name="always_floating_summary">تجاوز وضع التشغيل وفتح التطبيقات كنافذة عائمة دائماً</string>
+    <string name="quick_settings">الإعدادات السريعة</string>
+    <string name="enable_notif_btn">الإشعارات</string>
+    <string name="enable_qs_bluetooth_title">البلوتوث</string>
+    <string name="enable_qs_battery_title">البطارية</string>
+    <string name="enable_qs_wifi_title">Wi-Fi</string>
+    <string name="enable_qs_vol_title">الصوت</string>
+    <string name="enable_qs_date_title">الساعة</string>
+    <string name="enable_qs_pin_title">تثبيت</string>
+    <string name="enable_qs_pin_summary">يمكنك التثبيت/الإلغاء بالسحب لأسفل على الشريط أو اختصار لوحة المفاتيح</string>
+    <string name="behaviour">السلوك</string>
+    <string name="enable_apps_btn_summary">يمكنك فتح/إغلاق قائمة التطبيقات بالسحب للأعلى/الأسفل على الشريط</string>
+    <string name="activation_method">طريقة التفعيل</string>
+    <string name="activation_method_summary">الطريقة المستخدمة لإظهار الشريط عند إخفائه</string>
+    <string name="swipe">سحب/تحويم</string>
+    <string name="handle">مقبض</string>
+    <string name="handle_opacity">شفافية المقبض</string>
+    <string name="handle_position">موضع المقبض</string>
+    <string name="left">يسار</string>
+    <string name="right">يمين</string>
+    <string name="auto_pin_title">التثبيت التلقائي</string>
+    <string name="auto_pin_summary">ضبط التثبيت التلقائي</string>
+    <string name="pin_startup">تثبيت عند بدء التشغيل</string>
+    <string name="pin_windowed">تثبيت مع التطبيقات في النوافذ</string>
+    <string name="unpin_fullscreen">إلغاء التثبيت مع تطبيقات ملء الشاشة</string>
+    <string name="running_apps_number_title">عدد التطبيقات الجارية/الأخيرة للعرض</string>
+    <string name="max_running_apps_landscape">الحد الأقصى للتطبيقات (أفقي)</string>
+    <string name="lock_landscape_title">فرض الوضع الأفقي</string>
+    <string name="dock_shortcut_app_title">تطبيق الاختصار السريع</string>
+    <string name="dock_shortcut_app_summary">التطبيق الذي يُفتح عند الضغط على زر الاختصار في الشريط</string>
+    <string name="enable_dock_shortcut_title">إظهار زر الاختصار في الشريط</string>
+    <string name="desktop_density_title">وضع كثافة سطح المكتب</string>
+    <string name="desktop_density_summary">تغيير كثافة الشاشة تلقائياً عند تشغيل وضع سطح المكتب (موصى: 200). يعود للإعداد الأصلي عند الخروج.</string>
+    <string name="desktop_density_value_title">قيمة كثافة سطح المكتب</string>
+    <string name="desktop_density_value_summary">قيمة DPI المطبّقة عند تفعيل وضع سطح المكتب (الافتراضي: 200)</string>
+    <string name="enable_dock_shortcut_summary">يضيف زر اختصار بجانب زر الخلفية لفتح تطبيقك المختار كنافذة</string>
+    <string name="lock_landscape_summary">إبقاء الشاشة في الوضع الأفقي دائماً (موصى لاستخدام سطح المكتب)</string>
+    <string name="max_running_apps_portrait">الحد الأقصى للتطبيقات (عمودي)</string>
+    <string name="center_running_apps_title">توسيط التطبيقات الجارية</string>
+    <string name="dock_activation_area_title">منطقة تفعيل الشريط</string>
+    <string name="dock_activation_area_summary">ارتفاع منطقة التفعيل غير المرئية في أسفل الشاشة</string>
+
+    <!-- Desktop -->
+    <string name="desktop">سطح المكتب</string>
+    <string name="show_notes_title">أداة الملاحظات</string>
+
+    <!-- Default apps page -->
+    <string name="default_apps">التطبيقات الافتراضية</string>
+    <string name="app_browser_title">متصفح الويب</string>
+    <string name="app_files_title">الملفات</string>
+    <string name="app_music_title">الموسيقى</string>
+    <string name="app_movies_title">الأفلام</string>
+    <string name="app_assistant_title">المساعد</string>
+    <string name="app_clock_title">الساعة</string>
+    <string name="app_terminal_title">الطرفية</string>
+    <string name="app_rec_title">مسجّل الشاشة</string>
+    <string name="choose_app">اختر تطبيقاً</string>
+    <string name="tap_to_set">اضغط للضبط</string>
+
+    <!-- Keyboard page -->
+    <string name="keyboard">لوحة المفاتيح</string>
+    <string name="apps">التطبيقات</string>
+    <string name="general">عام</string>
+    <string name="enable_open_menu_title">Meta أو Home لفتح قائمة التطبيقات</string>
+    <string name="enable_lock_desktop_title">Alt+L لقفل سطح المكتب</string>
+    <string name="enable_open_settings_title">Alt+P لفتح الإعدادات</string>
+    <string name="enable_open_music_title">Alt+M لفتح تطبيق الموسيقى الافتراضي</string>
+    <string name="enable_open_browser_title">Alt+B لفتح المتصفح الافتراضي</string>
+    <string name="enable_open_terminal_title">Alt+T لفتح الطرفية</string>
+    <string name="enable_open_assist_title">Alt+A لتشغيل تطبيق المساعد الافتراضي</string>
+    <string name="enable_open_rec_title">Alt+R لتشغيل تطبيق مسجّل الشاشة</string>
+    <string name="enable_new_instance">Alt+Shift+N لفتح نافذة جديدة</string>
+    <string name="enable_expand_notifications_title">Alt+Q لفتح الإعدادات السريعة</string>
+    <string name="enable_ctrl_back_title">Ctrl الأيمن يعمل كزر رجوع</string>
+    <string name="enable_f10_title">F10 للتبديل بين الشاشة المقسّمة</string>
+    <string name="enable_toggle_pin_title">Alt+W لتثبيت/إلغاء تثبيت الشريط</string>
+    <string name="enable_menu_recents_title">مفتاح القائمة لعرض التطبيقات الأخيرة</string>
+
+    <!-- Sounds page -->
+    <string name="sounds">الأصوات</string>
+    <string name="please_note_that_you_must_prov">يرجى ملاحظة أنك يجب أن توفر الأصوات بنفسك</string>
+    <string name="startup_sound_title">صوت بدء التشغيل</string>
+    <string name="usb_sound_title">صوت توصيل جهاز USB</string>
+    <string name="notification_sound_title">صوت الإشعار</string>
+    <string name="charge_sound_title">صوت الشحن</string>
+    <string name="charge_complete_sound_title">صوت اكتمال الشحن</string>
+
+    <!-- Notifications page -->
+    <string name="notifications">الإشعارات</string>
+    <string name="manage_service">إدارة الخدمة</string>
+    <string name="notification_timeout_title">مدة عرض الإشعار (بالثواني)</string>
+    <string name="show_ongoing_title">عرض الإشعارات المستمرة</string>
+    <string name="silence_current_title">كتم للتطبيق الحالي</string>
+    <string name="blocked_notifications_title">الإشعارات المتجاهلة</string>
+    <string name="long_press_a_notification_to_a">اضغط مطوّلاً على إشعار لكتمه</string>
+    <string name="silenced_notifications">إشعارات مكتومة لهذا التطبيق</string>
+    <string name="enable_notif_panel_title">لوحة الإشعارات</string>
+    <string name="notification_popups">نوافذ الإشعارات المنبثقة</string>
+    <string name="popups_disabled">نوافذ الإشعارات المنبثقة معطّلة</string>
+    <string name="silenced_notifications_title">الإشعارات المكتومة</string>
+    <string name="hidden_notifications">الإشعارات المخفية</string>
+
+    <!-- Hot corners page -->
+    <string name="hot_corners">الزوايا الساخنة</string>
+    <string name="hot_corners_help">حرّك مؤشر الفأرة نحو الزوايا لتنفيذ إجراءاتها</string>
+    <string name="enable_corner_top_right_title">الزاوية العلوية اليمنى</string>
+    <string name="enable_corner_bottom_right_title">الزاوية السفلية اليمنى</string>
+    <string name="hot_corners_delay_title">تأخير التفعيل (بالميلي ثانية)</string>
+
+    <!-- Advanced page -->
+    <string name="advanced">متقدم</string>
+    <string name="these_settings_are_intended_fo">هذه الإعدادات مخصصة للمستخدمين المتقدمين. غيّرها فقط إذا كنت تعرف ما تفعل</string>
+    <string name="prefer_last_display">تفضيل الشاشات الثانوية</string>
+    <string name="prefer_last_display_summary">تفضيل الشاشات الثانوية لعرض التطبيقات والشريط</string>
+    <string name="restart_accessibility">تغيير هذا الإعداد يتطلب إعادة تشغيل خدمة إمكانية الوصول</string>
+    <string name="open_accessibility">فتح إمكانية الوصول</string>
+    <string name="custom_toasts">إشعارات مخصصة</string>
+    <string name="custom_toasts_summary">استخدام إشعارات مدمجة مخصصة للتطبيقات عند تثبيت الشريط</string>
+    <string name="dock_height">ارتفاع الشريط</string>
+    <string name="icon_pack">حزمة الأيقونات</string>
+
+    <string name="secure_settings">الإعدادات الآمنة</string>
+    <string name="custom_display_size_title">حجم الشاشة</string>
+    <string name="custom_display_size_summary">يتيح ضبط حجم عناصر الشاشة بدقة. يحتاج إعادة تشغيل</string>
+    <string name="custom_display_size_hint">اتركه فارغاً للإعداد الافتراضي</string>
+    <string name="icon_blacklist">قائمة إخفاء الأيقونات</string>
+    <string name="icon_blacklist_summary">الأيقونات المراد إخفاؤها من شريط الحالة</string>
+    <string name="disable_heads_up">تعطيل إشعارات الرأس</string>
+    <string name="disable_heads_up_summary">يعطّل نوافذ الإشعارات المنبثقة من Android</string>
+
+    <string name="root_required">صلاحية Root مطلوبة</string>
+    <string name="enable_power_menu_title">قائمة طاقة مدمجة</string>
+    <string name="enable_power_menu_summary">استخدام قائمة طاقة مخصصة بدلاً من قائمة النظام</string>
+    <string name="power_off">إيقاف التشغيل</string>
+    <string name="restart">إعادة التشغيل</string>
+    <string name="soft_restart">إعادة تشغيل ناعمة</string>
+    <string name="restart_dex">إعادة تشغيل DEX</string>
+    <string name="force_stop_dex">إيقاف قسري</string>
+    <string name="lock">قفل</string>
+    <string name="allow_app_freeze_title">السماح بتعطيل التطبيقات</string>
+    <string name="allow_app_freeze_summary">ستحتاج أداة خارجية مثل Ice Box (أو تشغيل pm enable [pkgname]) لإعادة تفعيل التطبيقات</string>
+    <string name="allow_sysapp_uninstall_title">السماح بإلغاء تثبيت تطبيقات النظام</string>
+    <string name="allow_sysapp_uninstall_summary">كن حذراً، هذا قد يكون خطيراً جداً</string>
+    <string name="hide_status_bar_title">إخفاء شريط الحالة</string>
+    <string name="hide_status_bar_summary">إخفاء شريط حالة Android العلوي لمظهر سطح مكتب أنظف</string>
+    <string name="hide_nav_buttons_title">إخفاء أزرار التنقل</string>
+    <string name="hide_nav_buttons_summary">يخفي أزرار تنقل Android البرمجية. يحتاج إعادة تشغيل</string>
+    <string name="disable_taskbar_title">تعطيل شريط المهام</string>
+    <string name="disable_taskbar_summary">يعطّل شريط مهام Android على أجهزة الشاشة الكبيرة</string>
+    <string name="enable_tiling_shortcut">Alt+مفاتيح الأسهم لترتيب النوافذ</string>
+    <string name="enable_soft_reboot_title">Alt+F12 لإعادة التشغيل الناعمة</string>
+    <string name="enable_soft_reboot_summary">قد يكون النظام غير مستجيب للحظات</string>
+    <string name="soft_reboot_title">إعادة تشغيل ناعمة الآن</string>
+    <string name="soft_reboot_summary">ستفقد كل العمل غير المحفوظ</string>
+    <string name="reboot_required_title">إعادة التشغيل مطلوبة</string>
+    <string name="reboot_required_text">إعادة التشغيل مطلوبة لتطبيق التغييرات. هل تريد إعادة التشغيل الآن؟</string>
+
+    <string name="backup_restore">النسخ الاحتياطي والاستعادة</string>
+    <string name="backup_preferences">نسخ احتياطي للإعدادات</string>
+    <string name="restore_preferences">استعادة الإعدادات</string>
+    <string name="preferences_saved">تم حفظ الإعدادات</string>
+    <string name="preferences_restored">تم استعادة الإعدادات</string>
+
+    <string name="development_tools">أدوات التطوير</string>
+    <string name="scale_factor_title">نسبة تكبير النافذة العادية</string>
+    <string name="scale_factor_summary">يحدد حجم النوافذ العادية</string>
+    <string name="icon_padding_title">حشوة الأيقونة</string>
+    <string name="icon_padding_summary">يحدد المسافة بين الأيقونة وحدودها</string>
+
+    <!-- Help and about page -->
+    <string name="about_project">عن المشروع</string>
+    <string name="about_project_github_summary">عرض الكود المصدري على GitHub</string>
+    <string name="about_version">الإصدار</string>
+    <string name="about_version_value">2.7</string>
+    <string name="help_and_about">المساعدة وعن التطبيق</string>
+    <string name="a_launcher_for_android_x86_by_">مشغّل وضع DeX بواسطة Mr Youki</string>
+    <string name="help">مساعدة</string>
+    <string name="youki_dex_its_free_and_open_">Youki DEX مجاني ومفتوح المصدر. ساهم على GitHub</string>
+    <string name="github">GitHub</string>
+    <string name="discord">Discord</string>
+    <string name="about_project_discord_summary">انضم إلى مجتمع Discord</string>
+    <string name="show_help_summary">اضغط للمساعدة</string>
+    <string name="app_help">فعّل Shizuku للحصول على كامل المميزات. بدونه ستفقد نصف الوظائف.
+
+إذا واجهتك أي مشكلة، قم بزيارة صفحة GitHub للمساعدة.
+
+امنح صلاحية إمكانية الوصول من الإعدادات لاستخدام جميع المميزات.
+
+لإلغاء التثبيت، أزل صلاحية مسؤول الجهاز أولاً.</string>
+    <string name="more_help">مساعدة إضافية</string>
+    <string name="contributors">المساهمون</string>
+    <string name="tap_to_see_the_list_of_great_p">اضغط لرؤية قائمة المساهمين العظماء في Youki DEX</string>
+    <string name="accessibility_service_description">يتيح تنفيذ إجراءات مثل الرجوع</string>
+    <string name="join_telegram_title">مجموعة Telegram</string>
+    <string name="join_telegram_summary">هل لديك أسئلة؟ انضم لمجموعة دعم Telegram</string>
+    <string name="gnu_general_public_licence_v3">رخصة GNU العامة v3.0</string>
+    <string name="license">الرخصة</string>
+    <string name="donate">تبرع</string>
+    <string name="support_the_project">ادعم المشروع</string>
+
+    <!-- App menu -->
+    <string name="user">المستخدم</string>
+    <string name="search">بحث…</string>
+    <string name="copied_to_clipboard">تم النسخ إلى الحافظة</string>
+    <string name="search_for">بحث عن</string>
+    <string name="on_google">على Google</string>
+    <string name="disabled">معطّل</string>
+
+    <!-- App context menu -->
+    <string name="shortcuts">الاختصارات…</string>
+    <string name="app_info">معلومات التطبيق</string>
+    <string name="uninstall">إلغاء التثبيت</string>
+    <string name="hide">إخفاء</string>
+    <string name="open_as">فتح كـ…</string>
+    <string name="add_to">إضافة إلى…</string>
+    <string name="launch_in">تشغيل في…</string>
+    <string name="freeze">تجميد</string>
+    <string name="pin">تثبيت</string>
+    <string name="unpin">إلغاء التثبيت</string>
+    <string name="favorites">المفضلة</string>
+    <string name="app_frozen">تم تجميد التطبيق</string>
+    <string name="remove">إزالة</string>
+
+    <!-- Desktop -->
+    <string name="lets_start">لنبدأ</string>
+    <string name="change_wallpaper">تغيير الخلفية</string>
+    <string name="display_settings">إعدادات الشاشة</string>
+
+    <!-- Toasts -->
+    <string name="tablet_mode_on">وضع الجهاز اللوحي مفعّل</string>
+    <string name="tablet_mode_off">وضع الجهاز اللوحي معطّل</string>
+    <string name="start_message">تم تشغيل Youki DEX</string>
+    <string name="enable_access_help">ابحث وفعّل خدمة Youki DEX</string>
+
+    <!-- Crash dialog -->
+    <string name="something_wrong">حدث خطأ ما</string>
+    <string name="save_log">حفظ السجل</string>
+    <string name="open_again">فتح التطبيق مجدداً</string>
+
+    <!-- Nav actions dialog -->
+    <string name="open_notifications">فتح درج الإشعارات</string>
+    <string name="launch_assistant">تشغيل تطبيق المساعد</string>
+    <string name="lock_device">قفل الجهاز</string>
+    <string name="toggle_split_screen">تبديل الشاشة المقسّمة</string>
+
+    <!-- Bubble customization -->
+    <string name="bubble_color_title">لون الفقاعة</string>
+    <string name="bubble_color_summary">اختر لون فقاعات أزرار الشريط</string>
+    <string name="bubble_alpha_title">شفافية الفقاعة</string>
+    <string name="bubble_alpha_summary">ضبط شفافية فقاعات أزرار الشريط</string>
+    <string name="bubble_mode_title">وضع لون الفقاعة</string>
+    <string name="bubble_mode_summary">الاختيار بين Material You أو لون مخصص</string>
+    <string name="bubble_mode_material_u">Material You (ديناميكي)</string>
+    <string name="bubble_mode_custom">لون مخصص</string>
+
+    <!-- Live Wallpaper -->
+    <string name="live_wallpaper_description">خلفية فيديو متحركة من YoukiDex</string>
+    <string name="live_wallpaper_title">خلفية متحركة</string>
+    <string name="live_wallpaper_pick">اختر ملف فيديو</string>
+    <string name="live_wallpaper_apply">تفعيل الخلفية</string>
+    <string name="live_wallpaper_no_file">لا يوجد ملف محدد — اختر فيديو أولاً</string>
+
+    <string name="system_sounds">أصوات واجهة النظام</string>
+    <string name="youki_sounds">أصوات YoukiDex</string>
+    <string name="sound_lock">القفل</string>
+    <string name="sound_unlock">فتح القفل</string>
+    <string name="sound_low_battery">البطارية منخفضة</string>
+    <string name="sound_wireless_charge">الشحن اللاسلكي</string>
+    <string name="sound_car_dock">توصيل حامل السيارة</string>
+    <string name="sound_car_undock">فصل حامل السيارة</string>
+    <string name="sound_desk_dock">توصيل حامل المكتب</string>
+    <string name="sound_desk_undock">فصل حامل المكتب</string>
+    <string name="sound_startup">بدء التشغيل</string>
+    <string name="sound_usb">USB موصول</string>
+    <string name="sound_charge">بدء الشحن</string>
+    <string name="sound_charge_complete">اكتمال الشحن</string>
+    <string name="sound_notification">إشعار</string>
+    <string name="charging_sound_enabled">صوت الشحن</string>
+    <string name="charging_sound_enabled_summary">تشغيل صوت عند بدء الشحن</string>
+    <string name="sound_applied">تم تطبيق الصوت ✓</string>
+    <string name="sound_copy_failed">فشل نسخ ملف الصوت</string>
+    <string name="permission_write_settings_required">امنح WRITE_SETTINGS عبر Shizuku أولاً</string>
+
+</resources>

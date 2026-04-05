@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="56dp"
+    android:gravity="center_vertical"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp">
+
+    <ImageView
+        android:layout_height="22dp"
+        android:layout_width="22dp"
+        android:src="@drawable/ic_volume"
+        android:id="@+id/ap_music_icon"
+        android:layout_marginEnd="12dp"/>
+
+    <SeekBar
+        android:layout_height="wrap_content"
+        android:layout_width="240dp"
+        android:id="@+id/ap_music_sb"/>
+
+</LinearLayout>

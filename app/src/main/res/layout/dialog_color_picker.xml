@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/colors_btn_toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        app:checkedButton="@+id/custom_button"
+        app:selectionRequired="true"
+        app:singleSelection="true" >
+
+        <Button
+            android:id="@+id/custom_button"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/custom" />
+
+        <Button
+            android:id="@+id/presets_button"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/presets" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <ViewSwitcher
+        android:id="@+id/colors_view_switcher"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginTop="12dp" >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <include layout="@layout/color_picker" />
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/presets_color_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <GridView
+                android:id="@+id/presets_gv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:numColumns="5"
+                android:stretchMode="columnWidth" />
+        </LinearLayout>
+    </ViewSwitcher>
+
+</LinearLayout>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ══════════════════════════════════════════════
+         تبديل تفعيل/تعطيل صوت الشحن
+    ══════════════════════════════════════════════ -->
+    <SwitchPreferenceCompat
+        android:defaultValue="true"
+        android:key="charging_sounds_enabled"
+        android:summary="@string/charging_sound_enabled_summary"
+        android:title="@string/charging_sound_enabled" />
+
+    <!-- ══════════════════════════════════════════════
+         أصوات واجهة النظام  (تُكتب في Settings.System)
+    ══════════════════════════════════════════════ -->
+    <PreferenceCategory android:title="@string/system_sounds">
+
+        <com.youki.dex.preferences.SoundFilePreference
+            android:key="sys_lock_sound"
+            android:summary="@string/tap_to_set"
+            android:title="@string/sound_lock" />
+
+        <com.youki.dex.preferences.SoundFilePreference
+            android:key="sys_unlock_sound"
+            android:summary="@string/tap_to_set"
+            android:title="@string/sound_unlock" />
+
+        <com.youki.dex.preferences.SoundFilePreference
+            android:key="sys_low_battery_sound"
+            android:summary="@string/tap_to_set"
+            android:title="@string/sound_low_battery" />
+
+        <com.youki.dex.preferences.SoundFilePreference
+            android:key="sys_wireless_charging_sound"
+            android:summary="@string/tap_to_set"
+            android:title="@string/sound_wireless_charge" />
+
+        <com.youki.dex.preferences.SoundFilePreference
+            android:key="sys_car_dock_sound"
+            android:summary="@string/tap_to_set"
+            android:title="@string/sound_car_dock" />
+
+        <com.youki.dex.preferences.SoundFilePreference
+            android:key="sys_car_undock_sound"
+            android:summary="@string/tap_to_set"
+            android:title="@string/sound_car_undock" />
+
+        <com.youki.dex.preferences.SoundFilePreference
+            android:key="sys_desk_dock_sound"
+            android:summary="@string/tap_to_set"
+            android:title="@string/sound_desk_dock" />
+
+        <com.youki.dex.preferences.SoundFilePreference
+            android:key="sys_desk_undock_sound"
+            android:summary="@string/tap_to_set"
+            android:title="@string/sound_desk_undock" />
+
+    </PreferenceCategory>
+
+    <!-- ══════════════════════════════════════════════
+         أصوات YoukiDex المخصصة  (تُشغَّل بالـ MediaPlayer)
+    ══════════════════════════════════════════════ -->
+    <PreferenceCategory android:title="@string/youki_sounds">
+
+        <com.youki.dex.preferences.SoundFilePreference
+            android:key="startup_sound"
+            android:summary="@string/tap_to_set"
+            android:title="@string/sound_startup" />
+
+        <com.youki.dex.preferences.SoundFilePreference
+            android:key="usb_sound"
+            android:summary="@string/tap_to_set"
+            android:title="@string/sound_usb" />
+
+        <com.youki.dex.preferences.SoundFilePreference
+            android:key="charge_sound"
+            android:summary="@string/tap_to_set"
+            android:title="@string/sound_charge" />
+
+        <com.youki.dex.preferences.SoundFilePreference
+            android:key="charge_complete_sound"
+            android:summary="@string/tap_to_set"
+            android:title="@string/sound_charge_complete" />
+
+        <com.youki.dex.preferences.SoundFilePreference
+            android:key="notification_sound"
+            android:summary="@string/tap_to_set"
+            android:title="@string/sound_notification" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

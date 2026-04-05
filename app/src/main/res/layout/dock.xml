@@ -1,0 +1,236 @@
+<com.youki.dex.widgets.HoverInterceptorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:elevation="5dp">
+
+    <RelativeLayout
+        android:id="@+id/dock_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/round_rect"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:visibility="gone">
+
+        <!-- CENTER: running apps -->
+        <LinearLayout
+            android:id="@+id/center_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/apps_btn_center"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_margin="5dp"
+                android:src="@drawable/ic_apps_menu"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/apps_lv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fadingEdgeLength="8dp"
+                android:requiresFadingEdge="horizontal" />
+        </LinearLayout>
+
+        <!-- RIGHT: system tray -->
+        <LinearLayout
+            android:id="@+id/system_tray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/notifications_btn"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/btn_bubble"
+                android:gravity="center"
+                android:textSize="10sp"
+                android:textColor="#FFFFFFFF"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <ImageView
+                android:id="@+id/pin_btn"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/btn_bubble"
+                android:padding="8dp"
+                android:src="@drawable/ic_unpin" />
+
+            <ImageView
+                android:id="@+id/bluetooth_btn"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/btn_bubble"
+                android:padding="7dp"
+                android:src="@drawable/ic_bluetooth_off"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/wifi_btn"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/btn_bubble"
+                android:padding="7dp"
+                android:src="@drawable/ic_wifi_on" />
+
+            <ImageView
+                android:id="@+id/volume_btn"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/btn_bubble"
+                android:padding="7dp"
+                android:src="@drawable/ic_volume" />
+
+            <TextView
+                android:id="@+id/battery_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/btn_bubble_rect"
+                android:gravity="center"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:drawablePadding="4dp"
+                android:textColor="#FFFFFFFF"
+                android:textSize="11sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/resource_monitor_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/btn_bubble_rect"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textColor="#FFFFFFFF"
+                android:textSize="12sp"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:visibility="gone"
+                android:text="0% 0M" />
+
+            <TextClock
+                android:id="@+id/date_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/btn_bubble_rect"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="#FFFFFFFF"
+                android:textSize="13sp"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <!-- LEFT: nav panel -->
+        <LinearLayout
+            android:id="@+id/nav_panel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/apps_btn"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/btn_bubble"
+                android:padding="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_apps_menu" />
+
+            <!-- ✅ Wallpaper bubble button -->
+            <ImageView
+                android:id="@+id/wallpaper_btn"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/btn_bubble"
+                android:padding="8dp"
+                android:src="@drawable/ic_wallpaper"
+                android:contentDescription="Wallpaper"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <!-- 📺 Cast button — shown when a Chromecast device is nearby -->
+            <ImageView
+                android:id="@+id/cast_btn"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/btn_bubble"
+                android:padding="8dp"
+                android:src="@drawable/ic_screen"
+                android:contentDescription="Cast"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="gone" />
+
+
+            <ImageView
+                android:id="@+id/back_btn"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/btn_bubble"
+                android:padding="9dp"
+                android:src="@drawable/ic_back"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/home_btn"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/btn_bubble"
+                android:padding="9dp"
+                android:src="@drawable/ic_home" />
+
+            <ImageView
+                android:id="@+id/recents_btn"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/btn_bubble"
+                android:padding="9dp"
+                android:src="@drawable/ic_recents" />
+
+            <ImageView
+                android:id="@+id/assist_btn"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/btn_bubble"
+                android:padding="8dp"
+                android:src="@drawable/ic_assistant"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</com.youki.dex.widgets.HoverInterceptorLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Material style: شفاف مع حد داكن -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="#18000000"/>
+    <stroke android:width="1.5dp" android:color="#55212121"/>
+</shape>

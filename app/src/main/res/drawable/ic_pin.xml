@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Win11 Fluent: دبوس تثبيت -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp"
+    android:viewportWidth="24" android:viewportHeight="24">
+    <path android:fillColor="#FFFFFFFF"
+        android:pathData="M16,9V4H17A1,1 0,0 0,17 2H7A1,1 0,0 0,7 4H8V9L6,11V13H11V21L12,22L13,21V13H18V11Z"/>
+</vector>

@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="18dp"
+    android:paddingRight="18dp"
+    android:paddingBottom="12dp"
+    android:paddingTop="12dp">
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/pin_startup_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pin_startup" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/pin_window_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pin_windowed" />
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/unpin_fullscreen_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/unpin_fullscreen" />
+
+</LinearLayout>

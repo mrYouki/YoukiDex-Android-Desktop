@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Google Assistant — 6 نقاط ملونة رسمية -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp"
+    android:viewportWidth="24" android:viewportHeight="24">
+    <!-- صف علوي: أزرق، أحمر، أصفر -->
+    <path android:fillColor="#4285F4"
+        android:pathData="M6,9 A2.5,2.5 0,1 1,6 4 A2.5,2.5 0,0 1,6 9Z"/>
+    <path android:fillColor="#EA4335"
+        android:pathData="M12,9 A2.5,2.5 0,1 1,12 4 A2.5,2.5 0,0 1,12 9Z"/>
+    <path android:fillColor="#FBBC05"
+        android:pathData="M18,9 A2.5,2.5 0,1 1,18 4 A2.5,2.5 0,0 1,18 9Z"/>
+    <!-- صف سفلي: أخضر، أزرق، أحمر -->
+    <path android:fillColor="#34A853"
+        android:pathData="M6,20 A2.5,2.5 0,1 1,6 15 A2.5,2.5 0,0 1,6 20Z"/>
+    <path android:fillColor="#4285F4"
+        android:pathData="M12,20 A2.5,2.5 0,1 1,12 15 A2.5,2.5 0,0 1,12 20Z"/>
+    <path android:fillColor="#EA4335"
+        android:pathData="M18,20 A2.5,2.5 0,1 1,18 15 A2.5,2.5 0,0 1,18 20Z"/>
+</vector>

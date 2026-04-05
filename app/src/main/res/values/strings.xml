@@ -1,0 +1,399 @@
+<resources>
+
+    <!-- General -->
+    <string name="app_name">Youki DEX</string>
+    <string name="none">None</string>
+    <string name="move">Move</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- Layouts dialog -->
+    <string name="choose_dock_layout">Choose a Dock layout</string>
+    <string name="phone">Phone</string>
+    <string name="tablet">Tablet</string>
+
+    <!-- Permissions dialog -->
+    <string name="manage_permissions">Manage permissions</string>
+    <string name="required">Required</string>
+    <string name="optional">Optional</string>
+    <string name="display_over_other_apps">Display over other apps</string>
+    <string name="display_over_other_apps_desc">Required to display the Dock, you cannot start the service without this</string>
+    <string name="accessibility_service">Accessibility service</string>
+    <string name="accessibility_service_desc">Use this to start and stop the Dock. Requires the above permission. If you get an error about <b>Restricted setting</b> click the Help button below</string>
+    <string name="recent_apps">Recent apps</string>
+    <string name="recent_apps_desc">Allows to display recent apps on the dock</string>
+    <string name="notification_access">Notification access</string>
+    <string name="notification_access_desc">Used to display notifications. If you get an error about <b>Restricted setting</b> click the Help button below</string>
+    <string name="device_administrator">Device administrator</string>
+    <string name="device_administrator_desc">Used to lock the screen. Disable before uninstalling</string>
+    <string name="storage">Storage</string>
+    <string name="storage_desc">Used to change the menu icon and event sounds</string>
+    <string name="overlays_in_settings">Allow overlays on Settings</string>
+    <string name="overlays_in_settings_desc">Used to keep the dock visible while the Settings app is open. This allows <b>any app</b> to display content on top of the Settings app not just the Dock. Must be enabled from Developer options</string>
+    <string name="write_secure">Write secure settings</string>
+    <string name="write_secure_desc">Needed for advanced settings. This is a special permission that must be granted with root or adb by running: \npm grant com.youki.dex android.permission.WRITE_SECURE_SETTINGS</string>
+    <string name="default_launcher">Set as default launcher</string>
+    <string name="default_launcher_desc">Set Youki DEX as your default home screen launcher so the desktop loads automatically.</string>
+    <string name="shizuku">Shizuku</string>
+    <string name="shizuku_desc">Shizuku grants privileged shell access without wireless ADB. Install Shizuku from Play Store, run it once via ADB or Wireless Debugging, then grant permission here.</string>
+    <string name="shizuku_open">Open Shizuku</string>
+    <string name="shell_terminal">Youki Shell Terminal</string>
+    <string name="shell_terminal_desc">A built-in terminal that runs shell commands directly inside the app using Root or Shizuku.</string>
+    <string name="manage">Manage…</string>
+    <string name="grant">Grant</string>
+    <string name="enable">Enable</string>
+    <string name="disable">Disable</string>
+
+    <!-- Appearance page -->
+    <string name="appearance">Appearance</string>
+    <string name="look_and_feel">Look and feel</string>
+    <string name="theme_title">Dock theme</string>
+    <string name="dark">Dark</string>
+    <string name="black">Black</string>
+    <string name="transparent">Transparent</string>
+    <string name="material_u">Material U</string>
+    <string name="red">Red</string>
+    <string name="custom">Custom</string>
+    <string name="theme_main_color_title">Main color</string>
+    <string name="theme_main_color_summary">Defines main color for item backgrounds</string>
+    <string name="choose_color">Choose color</string>
+    <string name="transparency">Transparency</string>
+    <string name="invalid_color">Invalid color</string>
+    <string name="dock_layout">Dock layout</string>
+    <string name="wallpaper">Wallpaper</string>
+    <string name="presets">Presets</string>
+    <string name="icon_shape_title">Icon shape</string>
+    <string name="circle">Circle</string>
+    <string name="squircle">Squircle</string>
+    <string name="system">System</string>
+    <string name="round_dock">Rounded corners for the dock</string>
+    <string name="single_line_labels">Single line for app names</string>
+    <string name="tint_indicators_title">Tint running indicators</string>
+
+    <!-- App menu page -->
+    <string name="app_menu">App Menu</string>
+    <string name="menu">Menu</string>
+    <string name="menu_icon_uri_title">Menu icon</string>
+    <string name="restore_menu_icon_title">Restore default menu icon</string>
+    <string name="app_menu_fullscreen_title">Open App menu in full screen</string>
+    <string name="app_menu_height_title">App menu height</string>
+    <string name="app_menu_width_title">App menu width</string>
+    <string name="num_columns_title">Number of columns</string>
+    <string name="center_app_menu">Centered app menu</string>
+    <string name="app_launch">App launch</string>
+    <string name="launch_mode_title">Default app launch mode</string>
+    <string name="standard">Standard</string>
+    <string name="maximized">Maximized</string>
+    <string name="portrait">Portrait</string>
+    <string name="fullscreen">Fullscreen</string>
+    <string name="remember_launch_mode_title">Remember launch mode</string>
+    <string name="remember_launch_mode_summary">Remember last launch mode used for every app</string>
+    <string name="launch_games_fullscreen_title">Launch games in full screen</string>
+    <string name="launch_games_fullscreen_summary">Launch apps detected as games in full screen by default</string>
+    <string name="launch_new_instance_secondary_title">New window on secondary displays</string>
+    <string name="launch_new_instance_secondary_summary">If supported by the app create a new window when launching on secondary displays</string>
+    <string name="user_info">User info</string>
+    <string name="user_name">Name</string>
+    <string name="user_avatar">Avatar</string>
+    <string name="allow_app_hiding">Allow hiding apps</string>
+    <string name="hidden_apps">Hidden apps</string>
+    <string name="choose_apps">Choose apps</string>
+
+    <!-- Dock page -->
+    <string name="dock">Dock</string>
+    <string name="navigation">Navigation</string>
+    <string name="enable_apps_btn">Apps menu</string>
+    <string name="enable_nav_back_title">Back</string>
+    <string name="enable_nav_home_title">Home</string>
+    <string name="enable_nav_recents_title">Recents</string>
+    <string name="long_press_action">Long press action</string>
+    <string name="tap_to_set_long_action">Tap to configure long press/hover action</string>
+    <string name="enable_nav_assist_title">Assistant</string>
+    <string name="quick_settings_panel">Quick Settings</string>
+    <string name="resource_monitor_title">Resource Monitor</string>
+    <string name="resource_monitor_summary">Show CPU and RAM usage in the taskbar</string>
+    <string name="always_floating_title">Always open as floating window</string>
+    <string name="always_floating_summary">Override launch mode and always open apps in floating window mode</string>
+    <string name="quick_settings">Quick settings</string>
+    <string name="enable_notif_btn">Notifications</string>
+    <string name="enable_qs_bluetooth_title">Bluetooth</string>
+    <string name="enable_qs_battery_title">Battery</string>
+    <string name="enable_qs_wifi_title">Wi-Fi</string>
+    <string name="enable_qs_vol_title">Volume</string>
+    <string name="enable_qs_date_title">Clock</string>
+    <string name="enable_qs_pin_title">Pin</string>
+    <string name="enable_qs_pin_summary">You can still pin/unpin the Dock by swiping down on it or using the keyboard shortcut</string>
+    <string name="behaviour">Behaviour</string>
+    <string name="enable_apps_btn_summary">You can still open/close the apps menu by swiping up/down on the dock</string>
+    <string name="activation_method">Activation method</string>
+    <string name="activation_method_summary">The method used to bring up the dock when hidden</string>
+    <string name="swipe">Swipe/Hover</string>
+    <string name="handle">Handle</string>
+    <string name="handle_opacity">Handle opacity</string>
+    <string name="handle_position">Handle position</string>
+    <string name="left">Left</string>
+    <string name="right">Right</string>
+    <string name="auto_pin_title">Auto pin</string>
+    <string name="auto_pin_summary">Configure auto pin</string>
+    <string name="pin_startup">Pin on startup</string>
+    <string name="pin_windowed">Pin on windowed apps</string>
+    <string name="unpin_fullscreen">Unpin on full screen apps</string>
+    <string name="running_apps_number_title">Number of running/recent apps to show</string>
+    <string name="max_running_apps_landscape">Max recent apps (landscape)</string>
+    <string name="lock_landscape_title">Force Landscape Mode</string>
+    <string name="dock_shortcut_app_title">Dock Quick-Launch App</string>
+    <string name="dock_shortcut_app_summary">App opened when you tap the shortcut button in the dock</string>
+    <string name="enable_dock_shortcut_title">Show Quick-Launch Button in Dock</string>
+    <string name="desktop_density_title">Desktop Density Mode</string>
+    <string name="desktop_density_summary">Automatically change screen density when desktop mode starts (recommended: 200). Reverts on exit.</string>
+    <string name="desktop_density_value_title">Desktop Density Value</string>
+    <string name="desktop_density_value_summary">DPI value applied when desktop mode is active (default: 200)</string>
+    <string name="enable_dock_shortcut_summary">Adds a shortcut button next to the wallpaper button that opens your chosen app as a window</string>
+    <string name="lock_landscape_summary">Always keep the screen in landscape orientation (recommended for desktop use)</string>
+    <string name="max_running_apps_portrait">Max recent apps (portrait)</string>
+    <string name="center_running_apps_title">Center running apps</string>
+    <string name="dock_activation_area_title">Dock activation area</string>
+    <string name="dock_activation_area_summary">The height of the invisible activation area at the bottom of the screen</string>
+
+    <!-- Desktop -->
+    <string name="desktop">Desktop</string>
+    <string name="show_notes_title">Notes widget</string>
+
+    <!-- Default apps page -->
+    <string name="default_apps">Default apps</string>
+    <string name="app_browser_title">Web browser</string>
+    <string name="app_files_title">Files</string>
+    <string name="app_music_title">Music</string>
+    <string name="app_movies_title">Movies</string>
+    <string name="app_assistant_title">Assistant</string>
+    <string name="app_clock_title">Clock</string>
+    <string name="app_terminal_title">Terminal</string>
+    <string name="app_rec_title">Screen recorder</string>
+    <string name="choose_app">Choose an app</string>
+    <string name="tap_to_set">Tap to set</string>
+
+    <!-- Keyboard page -->
+    <string name="keyboard">Keyboard</string>
+    <string name="apps">Apps</string>
+    <string name="general">General</string>
+    <string name="enable_open_menu_title">Meta or Home to open the apps menu</string>
+    <string name="enable_lock_desktop_title">Alt+L to lock the desktop</string>
+    <string name="enable_open_settings_title">Alt+P to open settings</string>
+    <string name="enable_open_music_title">Alt+M to open you default music app</string>
+    <string name="enable_open_browser_title">Alt+B to open your default browser</string>
+    <string name="enable_open_terminal_title">Alt+T to open terminal</string>
+    <string name="enable_open_assist_title">Alt+A to launch your default assistant app</string>
+    <string name="enable_open_rec_title">Alt+R to launch your default screen recorder app</string>
+    <string name="enable_new_instance">Alt+Shift+N to launch a new window</string>
+    <string name="enable_expand_notifications_title">Alt+Q to open quick settings</string>
+    <string name="enable_ctrl_back_title">Right Ctrl acts as back button</string>
+    <string name="enable_f10_title">F10 to toggle split screen</string>
+    <string name="enable_toggle_pin_title">Alt+W to pin/unpin the dock</string>
+    <string name="enable_menu_recents_title">Menu key to show recents</string>
+
+    <!-- Sounds page -->
+    <string name="sounds">Sounds</string>
+    <string name="please_note_that_you_must_prov">Please note that you must provide your own sounds</string>
+    <string name="startup_sound_title">Startup sound</string>
+    <string name="usb_sound_title">USB device connected sound</string>
+    <string name="notification_sound_title">Notification sound</string>
+    <string name="charge_sound_title">Charge sound</string>
+    <string name="charge_complete_sound_title">Charge complete sound</string>
+
+    <!-- Notifications page -->
+    <string name="notifications">Notifications</string>
+    <string name="manage_service">Manage service</string>
+    <string name="notification_timeout_title">Notification display time (in seconds)</string>
+    <string name="show_ongoing_title">Show ongoing notifications</string>
+    <string name="silence_current_title">Silence for current app</string>
+    <string name="blocked_notifications_title">Ignored notifications</string>
+    <string name="long_press_a_notification_to_a">Long press a notification to silence it</string>
+    <string name="silenced_notifications">Silenced notifications for this app</string>
+    <string name="enable_notif_panel_title">Notification panel</string>
+    <string name="notification_popups">Notification pop-ups</string>
+    <string name="popups_disabled">Notification pop-ups disabled</string>
+    <string name="silenced_notifications_title">Silenced notifications</string>
+    <string name="hidden_notifications">Hidden notifications</string>
+
+    <!-- Hot corners page -->
+    <string name="hot_corners">Hot Corners</string>
+    <string name="hot_corners_help">Hover the mouse pointer over the corners to trigger their actions</string>
+    <string name="enable_corner_top_right_title">Top right corner</string>
+    <string name="enable_corner_bottom_right_title">Bottom right corner</string>
+    <string name="hot_corners_delay_title">Activation delay (in milliseconds)</string>
+
+    <!-- Advanced page -->
+    <string name="advanced">Advanced</string>
+    <string name="these_settings_are_intended_fo">These settings are intended for advanced users. Only change them if you know what you are doing</string>
+    <string name="prefer_last_display">Prefer secondary displays</string>
+    <string name="prefer_last_display_summary">Prefer secondary displays for displaying apps and the dock</string>
+    <string name="restart_accessibility">Changing this setting requires restarting the Accessibility service</string>
+    <string name="open_accessibility">Open Accessibility</string>
+    <string name="custom_toasts">Custom Toasts</string>
+    <string name="custom_toasts_summary">Use built-in custom Toasts for apps when the Dock is pinned</string>
+    <string name="dock_height">Dock height</string>
+    <string name="icon_pack">Icon pack</string>
+
+    <string name="secure_settings">Secure settings</string>
+    <string name="custom_display_size_title">Display size</string>
+    <string name="custom_display_size_summary">Allows you to fine tune the display size of screen elements. Needs reboot</string>
+    <string name="custom_display_size_hint">leave blank for default</string>
+    <string name="icon_blacklist">Icon blacklist</string>
+    <string name="icon_blacklist_summary">Icons to hide from the status bar</string>
+    <string name="disable_heads_up">Disable notification heads-up</string>
+    <string name="disable_heads_up_summary">Disables Android\'s notification pop-ups</string>
+
+    <string name="root_required">Root required</string>
+    <string name="enable_power_menu_title">Built in power menu</string>
+    <string name="enable_power_menu_summary">Use a custom power menu instead of the system one</string>
+    <string name="power_off">Power off</string>
+    <string name="restart">Restart</string>
+    <string name="soft_restart">Soft restart</string>
+    <string name="restart_dex">Restart DEX</string>
+    <string name="force_stop_dex">Force Stop</string>
+    <string name="lock">Lock</string>
+    <string name="allow_app_freeze_title">Allow disabling apps</string>
+    <string name="allow_app_freeze_summary">You will need an external tool such as Ice Box (or running pm enable [pkgname]) to re-enable apps</string>
+    <string name="allow_sysapp_uninstall_title">Allow uninstalling system apps</string>
+    <string name="allow_sysapp_uninstall_summary">Please be careful, this can be really dangerous</string>
+    <string name="hide_status_bar_title">Hide status bar</string>
+    <string name="hide_status_bar_summary">Hide the top Android status bar for a cleaner desktop look</string>
+    <string name="hide_nav_buttons_title">Hide navigation buttons</string>
+    <string name="hide_nav_buttons_summary">Hides Android software navigation buttons. Needs reboot</string>
+    <string name="disable_taskbar_title">Disable taskbar</string>
+    <string name="disable_taskbar_summary">Disables Android\'s taskbar on large screen devices</string>
+    <string name="enable_tiling_shortcut">Alt+arrow keys to tile windows</string>
+    <string name="enable_soft_reboot_title">Alt+F12 to soft reboot</string>
+    <string name="enable_soft_reboot_summary">System might be unresponsive for a short while</string>
+    <string name="soft_reboot_title">Soft reboot now</string>
+    <string name="soft_reboot_summary">Soft reboot now. You will lose all unsaved work</string>
+    <string name="reboot_required_title">Reboot required</string>
+    <string name="reboot_required_text">A reboot is required for changes to take effect. Do you want to reboot now?</string>
+
+    <string name="backup_restore">Backup and restore</string>
+    <string name="backup_preferences">Backup preferences</string>
+    <string name="restore_preferences">Restore preferences</string>
+    <string name="preferences_saved">Preferences saved</string>
+    <string name="preferences_restored">Preferences restored</string>
+
+    <string name="development_tools">Development tools</string>
+    <string name="scale_factor_title">Standard window scale factor</string>
+    <string name="scale_factor_summary">Defines how big standard windows are</string>
+    <string name="icon_padding_title">Icon padding</string>
+    <string name="icon_padding_summary">Defines the amount of space between the icon and its border</string>
+
+
+    <!-- Help and about page -->
+    <string name="about_project">About Project</string>
+    <string name="about_project_github_summary">View source code on GitHub</string>
+    <string name="about_version">Version</string>
+    <string name="about_version_value">2.7</string>
+    <string name="help_and_about">Help and about</string>
+    <string name="a_launcher_for_android_x86_by_">A DeX mode launcher by Mr Youki</string>
+    <string name="help">Help</string>
+    <string name="youki_dex_its_free_and_open_">Youki DEX is free and open source. Contribute on GitHub</string>
+    <string name="github">GitHub</string>
+    <string name="discord">Discord</string>
+    <string name="about_project_discord_summary">Join our Discord community</string>
+    <string name="show_help_summary">Tap for help</string>
+    <string name="app_help">Activate Shizuku to unlock all features. Without it, half the features will be unavailable.
+
+For help with any issue, visit the GitHub page.
+
+Grant Accessibility permission from Settings to use all features.
+
+To uninstall, remove Device Administrator permission first.</string>
+    <string name="more_help">More help</string>
+    <string name="contributors">Contributors</string>
+    <string name="tap_to_see_the_list_of_great_p">Tap to see the list of great people that has contributed to Youki DEX</string>
+    <string name="accessibility_service_description">Allows to perform actions such as Back</string>
+    <string name="join_telegram_title">Telegram group</string>
+    <string name="join_telegram_summary">Got any questions? Join the Telegram support group</string>
+    <string name="gnu_general_public_licence_v3">GNU General Public Licence v3.0</string>
+    <string name="license">License</string>
+    <string name="donate">Donate</string>
+    <string name="support_the_project">Support the project</string>
+
+    <!-- App menu -->
+    <string name="user">User</string>
+    <string name="search">Search…</string>
+    <string name="copied_to_clipboard">Copied to clipboard</string>
+    <string name="search_for">Search for</string>
+    <string name="on_google">on Google</string>
+    <string name="disabled">Disabled</string>
+
+    <!-- App context menu -->
+    <string name="shortcuts">Shortcuts…</string>
+    <string name="app_info">App Info</string>
+    <string name="uninstall">Uninstall</string>
+    <string name="hide">Hide</string>
+    <string name="open_as">Open as…</string>
+    <string name="add_to">Add to…</string>
+    <string name="launch_in">Launch in…</string>
+    <string name="freeze">Freeze</string>
+    <string name="pin">Pin</string>
+    <string name="unpin">Unpin</string>
+    <string name="favorites">Favorites</string>
+    <string name="app_frozen">App frozen</string>
+    <string name="remove">Remove</string>
+
+    <!-- Desktop -->
+    <string name="lets_start">Let\'s start</string>
+    <string name="change_wallpaper">Change wallpaper</string>
+    <string name="display_settings">Display settings</string>
+
+    <!-- Toasts -->
+    <string name="tablet_mode_on">Tablet mode on</string>
+    <string name="tablet_mode_off">Tablet mode off</string>
+    <string name="start_message">Youki DEX started</string>
+    <string name="enable_access_help">Find and enable Youki DEX service</string>
+
+    <!-- Crash dialog -->
+    <string name="something_wrong">Something went wrong</string>
+    <string name="save_log">Save log</string>
+    <string name="open_again">Open app again</string>
+
+    <!-- Nav actions dialog -->
+    <string name="open_notifications">Open notification drawer</string>
+    <string name="launch_assistant">Launch assistant app</string>
+    <string name="lock_device">Lock device</string>
+    <string name="toggle_split_screen">Toggle split screen</string>
+    <!-- Blur theme -->
+    <!-- Bubble customization -->
+    <string name="bubble_color_title">Bubble Color</string>
+    <string name="bubble_color_summary">Choose the color of dock button bubbles</string>
+    <string name="bubble_alpha_title">Bubble Opacity</string>
+    <string name="bubble_alpha_summary">Adjust the transparency of dock button bubbles</string>
+    <string name="bubble_mode_title">Bubble Color Mode</string>
+    <string name="bubble_mode_summary">Choose between Material You or a custom color</string>
+    <string name="bubble_mode_material_u">Material You (Dynamic)</string>
+    <string name="bubble_mode_custom">Custom Color</string>
+    <!-- Live Wallpaper -->
+    <string name="live_wallpaper_description">خلفية فيديو متحركة من YoukiDex</string>
+    <string name="live_wallpaper_title">خلفية متحركة</string>
+    <string name="live_wallpaper_pick">اختر ملف فيديو</string>
+    <string name="live_wallpaper_apply">تفعيل الخلفية</string>
+    <string name="live_wallpaper_no_file">لا يوجد ملف محدد — اختر فيديو أولاً</string>
+
+    <string name="system_sounds">System UI Sounds</string>
+    <string name="youki_sounds">YoukiDex Sounds</string>
+    <string name="sound_lock">Lock</string>
+    <string name="sound_unlock">Unlock</string>
+    <string name="sound_low_battery">Low Battery</string>
+    <string name="sound_wireless_charge">Wireless Charging</string>
+    <string name="sound_car_dock">Car Dock</string>
+    <string name="sound_car_undock">Car Undock</string>
+    <string name="sound_desk_dock">Desk Dock</string>
+    <string name="sound_desk_undock">Desk Undock</string>
+    <string name="sound_startup">Startup</string>
+    <string name="sound_usb">USB Connected</string>
+    <string name="sound_charge">Charging Started</string>
+    <string name="sound_charge_complete">Charging Complete</string>
+    <string name="sound_notification">Notification</string>
+    <string name="charging_sound_enabled">Charging Sound</string>
+    <string name="charging_sound_enabled_summary">Play sound when charging starts</string>
+    <string name="sound_applied">Sound applied ✓</string>
+    <string name="sound_copy_failed">Failed to copy audio file</string>
+    <string name="permission_write_settings_required">Grant WRITE_SETTINGS via Shizuku first</string>
+
+</resources>

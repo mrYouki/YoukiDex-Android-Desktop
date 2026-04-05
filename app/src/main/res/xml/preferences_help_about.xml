@@ -1,0 +1,45 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- صورة المطور - اضغط عليها تفتح GitHub Profile -->
+    <Preference
+        android:key="open_github_profile"
+        android:icon="@mipmap/ic_youki"
+        android:title="@string/app_name"
+        android:summary="@string/a_launcher_for_android_x86_by_" />
+
+    <!-- قسم Help -->
+    <Preference
+        android:key="show_help"
+        android:summary="@string/show_help_summary"
+        android:title="@string/help" />
+
+    <!-- قسم معلومات المشروع -->
+    <PreferenceCategory
+        android:title="@string/about_project">
+
+        <Preference
+            android:key="open_github_project"
+            android:icon="@drawable/ic_github"
+            android:title="@string/github"
+            android:summary="@string/about_project_github_summary" />
+
+        <Preference
+            android:key="open_discord"
+            android:icon="@drawable/ic_discord"
+            android:title="@string/discord"
+            android:summary="@string/about_project_discord_summary" />
+
+        <Preference
+            android:key="app_version"
+            android:title="@string/about_version"
+            android:summary="@string/about_version_value"
+            android:selectable="false" />
+
+        <Preference
+            android:summary="@string/gnu_general_public_licence_v3"
+            android:title="@string/license"
+            android:selectable="false" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,36 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- حاوية الأيقونات الحرة (Drag & Drop) -->
+    <FrameLayout
+        android:id="@+id/desktop_icons_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- ملاحظات (يمين أعلى) -->
+    <EditText
+        android:id="@+id/notes_et"
+        android:layout_width="230dp"
+        android:layout_height="260dp"
+        android:layout_gravity="end|top"
+        android:layout_margin="10dp"
+        android:background="@drawable/notes_background"
+        android:ems="10"
+        android:gravity="start"
+        android:inputType="textMultiLine"
+        android:padding="10dp"
+        android:textColor="#FF121212"
+        android:textSize="17sp"
+        android:visibility="gone" />
+
+    <!-- زر تشغيل الخدمة -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/service_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/lets_start" />
+
+</FrameLayout>

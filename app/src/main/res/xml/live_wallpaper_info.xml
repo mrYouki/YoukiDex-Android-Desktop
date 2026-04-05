@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wallpaper
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:label="YoukiDex Live Wallpaper"
+    android:description="@string/live_wallpaper_description"
+    android:thumbnail="@mipmap/ic_launcher" />

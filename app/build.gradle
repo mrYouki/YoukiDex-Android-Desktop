@@ -1,0 +1,70 @@
+plugins {
+    id 'com.android.application'
+    // تم تحديث الصيغة لتكون أكثر استقراراً مع Gradle 8+
+    id 'org.jetbrains.kotlin.android' version '1.9.24' 
+}
+
+android {
+    namespace "com.youki.dex"
+    compileSdk 34
+	
+    defaultConfig {
+        applicationId "com.youki.dex"
+        minSdk 30
+        targetSdk 34
+        versionCode 270
+        versionName "2.7"
+        
+        // أضفنا هذا السطر للتأكد من دعم الـ Java الحديثة في التشغيل
+        multiDexEnabled true 
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packaging {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+            excludes += '/META-INF/LICENSE.md'
+            excludes += '/META-INF/LICENSE-notice.md'
+            excludes += '/META-INF/DEPENDENCIES'
+            excludes += '/META-INF/INDEX.LIST'
+            excludes += '/META-INF/io.netty.versions.properties'
+            pickFirst 'META-INF/LICENSE.md'
+        }
+    }
+
+    compileOptions {
+        // رفعناها لـ 17 لتناسب SDK 36 و Gradle 8.10
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+dependencies {
+    // تحديث الكوتلن لنسخة مستقرة تماماً مع SDK 36
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.9.24'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+    
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.preference:preference-ktx:1.2.1'
+    
+    implementation 'com.github.ChickenHook:RestrictionBypass:2.2'
+    
+    // Shizuku - أسطورة التحكم 🛠️
+    implementation 'dev.rikka.shizuku:api:13.1.5'
+    implementation 'dev.rikka.shizuku:provider:13.1.5'
+
+    // Google Cast - عيش الدور على الشاشة الكبيرة 📺
+    implementation 'com.google.android.gms:play-services-cast-framework:21.4.0'
+    implementation 'androidx.mediarouter:mediarouter:1.7.0'
+}

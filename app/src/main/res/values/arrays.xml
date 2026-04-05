@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="themes">
+        <item>@string/dark</item>
+        <item>@string/black</item>
+        <item>@string/transparent</item>
+        <item>@string/material_u</item>
+        <item>@string/custom</item>
+    </string-array>
+
+    <string-array name="theme_values">
+        <item>dark</item>
+        <item>black</item>
+        <item>transparent</item>
+        <item>material_u</item>
+        <item>custom</item>
+    </string-array>
+    
+    <string-array name="icon_shapes">
+        <item>@string/circle</item>
+        <item>@string/squircle</item>
+        <item>Windows 11</item>
+        <item>@string/system</item>
+    </string-array>
+
+    <string-array name="icon_shapes_values">
+        <item>circle</item>
+        <item>round_rect</item>
+        <item>win</item>
+        <item>default</item>
+    </string-array>
+
+    <string-array name="launch_modes">
+        <item>@string/standard</item>
+        <item>@string/maximized</item>
+        <item>@string/portrait</item>
+        <item>@string/fullscreen</item>
+    </string-array>
+    <string-array name="launch_mode_values">
+        <item>standard</item>
+        <item>maximized</item>
+        <item>portrait</item>
+        <item>fullscreen</item>
+    </string-array>
+	
+	<string-array name="layouts">
+		<item>@string/phone</item>
+		<item>@string/tablet</item>
+		<item>@string/desktop</item>
+	</string-array>
+	
+	<string-array name="activation_methods">
+		<item>@string/swipe</item>
+		<item>@string/handle</item>
+	</string-array>
+	
+	<string-array name="activation_method_values">
+		<item>swipe</item>
+		<item>handle</item>
+	</string-array>
+
+    <string-array name="handle_positions">
+        <item>@string/left</item>
+        <item>@string/right</item>
+    </string-array>
+
+    <string-array name="handle_positions_values">
+        <item>start</item>
+        <item>end</item>
+    </string-array>
+
+    <string-array name="nav_long_actions">
+        <item>@string/none</item>
+        <item>@string/open_notifications</item>
+        <item>@string/launch_assistant</item>
+        <item>@string/lock_device</item>
+        <item>@string/toggle_split_screen</item>
+    </string-array>
+ 
+    <string-array name="default_color_values" translatable="false">
+        <item>#EF5350</item>
+        <item>#B71C1C</item>
+        <item>#880E4F</item>
+        <item>#4A148C</item>
+        <item>#311B92</item>
+        <item>#1A237E</item>
+		
+        <item>#0D47A1</item>
+		<item>#01579B</item>
+		<item>#006064</item>
+		<item>#004D40</item>
+		<item>#1B5E20</item>
+		
+		<item>#33691E</item>
+		<item>#827717</item>
+		<item>#F57F17</item>
+		<item>#FF6F00</item>
+		<item>#E65100</item>
+		
+		<item>#BF360C</item>
+		<item>#3E2723</item>
+		<item>#212121</item>
+		<item>#263238</item>
+		
+		
+        <item>#959595</item>
+        <item>#727272</item>
+        <item>#565656</item>
+        <item>#3E3E3E</item>
+        <item>#101010</item>
+    </string-array>
+
+    <string-array name="bubble_modes">
+        <item>@string/bubble_mode_material_u</item>
+        <item>@string/bubble_mode_custom</item>
+    </string-array>
+
+    <string-array name="bubble_mode_values">
+        <item>material_u</item>
+        <item>custom</item>
+    </string-array>
+
+</resources>
+

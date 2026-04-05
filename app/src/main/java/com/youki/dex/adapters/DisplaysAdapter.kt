@@ -1,0 +1,27 @@
+package com.youki.dex.adapters
+
+import android.content.Context
+import android.view.Display
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.preference.PreferenceManager
+import com.youki.dex.R
+import com.youki.dex.utils.ColorUtils
+
+class DisplaysAdapter(private val context: Context, displays: Array<Display>) : ArrayAdapter<Display>(context, R.layout.context_menu_entry, displays) {
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        var convertView = convertView
+        val display = getItem(position)
+        if (convertView == null) convertView = LayoutInflater.from(context).inflate(R.layout.context_menu_entry, null)
+        val icon = convertView!!.findViewById<ImageView>(R.id.menu_entry_iv)
+        val text = convertView.findViewById<TextView>(R.id.menu_entry_tv)
+        ColorUtils.applySecondaryColor(context, PreferenceManager.getDefaultSharedPreferences(context), icon)
+        text.text = display!!.name
+        icon.setImageResource(R.drawable.ic_screen)
+        return convertView
+    }
+}

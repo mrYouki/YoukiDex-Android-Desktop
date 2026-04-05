@@ -1,0 +1,343 @@
+package com.youki.dex.utils
+
+import android.annotation.SuppressLint
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
+import android.media.MediaMetadataRetriever
+import android.net.Uri
+import android.util.Log
+import android.view.ContextThemeWrapper
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.WindowManager
+import android.view.animation.AnimationUtils
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.Toast
+import com.youki.dex.R
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.io.File
+
+/**
+ * WallpaperBubbleManager
+ *
+ * Floating bubble that appears above the dock wallpaper button.
+ * Shows a horizontal scrollable gallery of all saved wallpapers.
+ * The "+" button expands a source sheet with:
+ *   • مدير الملفات  (local file picker — video / GIF / image)
+ *   • moewalls.com
+ *   • vsthemes.org
+ *   • motionbgs.com
+ *
+ * Supported thumbnail sources:
+ *   Video  → first frame via MediaMetadataRetriever
+ *   GIF    → first frame via Movie API
+ *   Image  → BitmapFactory
+ */
+class WallpaperBubbleManager(
+    private val context: Context,
+    private val windowManager: WindowManager,
+    private val anchorView: View,
+    private val onFilePickerRequested: () -> Unit,
+    private val onWallpaperSelected: (File) -> Unit,
+    // Color (with alpha) from the dock — bubble uses same transparency
+    private var bubbleColor: Int = android.graphics.Color.argb(115, 30, 30, 30)
+) {
+
+    companion object {
+        private const val TAG             = "WallpaperBubble"
+        private const val THUMB_SIZE_DP   = 96   // was 60 — bigger Material tiles
+        private const val THUMB_MARGIN_DP = 6
+    }
+
+    private var bubbleView: View? = null
+    private var isShowing = false
+    private var sourceSheetOpen = false
+
+    val isVisible get() = isShowing
+
+    fun toggle() = if (isShowing) hide() else show()
+
+    // ─── Show / Hide ─────────────────────────────────────────────────────────
+
+    @SuppressLint("InflateParams")
+    fun show() {
+        if (isShowing) return
+        // ContextThemeWrapper is required so ?attr/selectableItemBackground resolves correctly
+        // when inflating from a WindowManager/Service context (which has no Activity theme).
+        val themedContext = ContextThemeWrapper(context, R.style.AppTheme_Dock)
+        val root = LayoutInflater.from(themedContext).inflate(R.layout.wallpaper_bubble, null)
+        bubbleView = root
+        setupThumbnails(root)
+        setupSourceSheet(root)
+
+        val params = Utils.makeWindowParams(
+            WindowManager.LayoutParams.WRAP_CONTENT,
+            WindowManager.LayoutParams.WRAP_CONTENT,
+            context, false
+        ).apply {
+            gravity = Gravity.BOTTOM or Gravity.START
+            val loc = IntArray(2)
+            anchorView.getLocationOnScreen(loc)
+            x = loc[0]
+            y = Utils.dpToPx(context, 72)
+        }
+        applyBubbleColor(root)
+        windowManager.addView(root, params)
+        root.startAnimation(AnimationUtils.loadAnimation(context, R.anim.btn_release))
+        isShowing = true
+        log("Bubble shown (${WallpaperManagerHelper.getLibraryFiles(context).size} wallpapers in library)")
+    }
+
+    /** Call this whenever the dock color changes to sync the bubble. */
+    fun updateColor(color: Int) {
+        bubbleColor = color
+        bubbleView?.let { applyBubbleColor(it) }
+    }
+
+    private fun applyBubbleColor(root: View) {
+        val card   = root.findViewById<android.view.View?>(R.id.wallpaper_bubble_card)
+        val sheet  = root.findViewById<android.view.View?>(R.id.wallpaper_source_sheet)
+        val addBtn = root.findViewById<android.view.View?>(R.id.wallpaper_add_btn)
+
+        // Use dock color as-is (it already has the correct alpha+RGB from getBubbleColor).
+        // We clamp alpha to a minimum of 160/255 (~63%) so text stays readable even on
+        // a fully transparent dock — but we never go brighter than what the dock chose.
+        val r = android.graphics.Color.red(bubbleColor)
+        val g = android.graphics.Color.green(bubbleColor)
+        val b = android.graphics.Color.blue(bubbleColor)
+        val a = android.graphics.Color.alpha(bubbleColor).coerceAtLeast(160)
+        val cardColor = android.graphics.Color.argb(a, r, g, b)
+
+        fun makeBg(radiusDp: Int = 24): android.graphics.drawable.GradientDrawable =
+            android.graphics.drawable.GradientDrawable().apply {
+                shape = android.graphics.drawable.GradientDrawable.RECTANGLE
+                cornerRadius = Utils.dpToPx(context, radiusDp).toFloat()
+                setColor(cardColor)
+            }
+
+        card?.background  = makeBg(24)
+        sheet?.background = makeBg(24)
+
+        // Add button: same color family but slightly lighter stroke, pill shape
+        val accentAlpha = (a * 0.9f).toInt().coerceIn(120, 255)
+        val accentR = (r + 25).coerceAtMost(255)
+        val accentG = (g + 25).coerceAtMost(255)
+        val accentB = (b + 25).coerceAtMost(255)
+        addBtn?.background = android.graphics.drawable.GradientDrawable().apply {
+            shape = android.graphics.drawable.GradientDrawable.RECTANGLE
+            cornerRadius = Utils.dpToPx(context, 18).toFloat()
+            setColor(android.graphics.Color.argb(accentAlpha, accentR, accentG, accentB))
+            // Subtle white stroke — Material "outline" feel
+            setStroke(
+                Utils.dpToPx(context, 1),
+                android.graphics.Color.argb(60, 255, 255, 255)
+            )
+        }
+    }
+
+    fun hide() {
+        bubbleView?.let {
+            try { windowManager.removeView(it) } catch (_: Exception) {}
+            bubbleView = null
+        }
+        isShowing = false
+        sourceSheetOpen = false
+        log("Bubble hidden")
+    }
+
+    /** Rebuild thumbnails after a new wallpaper is added. */
+    fun refresh() { if (isShowing) { hide(); show() } }
+
+    // ─── Thumbnails ──────────────────────────────────────────────────────────
+
+    private fun setupThumbnails(root: View) {
+        val row = root.findViewById<LinearLayout>(R.id.wallpaper_thumbnails_row)
+        row.removeAllViews()
+        val files      = WallpaperManagerHelper.getLibraryFiles(context)
+        val activeFile = WallpaperManagerHelper.getWallpaperFile(context)
+
+        if (files.isEmpty()) {
+            // Placeholder icon when library is empty
+            row.addView(ImageView(context).apply {
+                setImageResource(R.drawable.ic_wallpaper)
+                alpha = 0.4f
+                layoutParams = LinearLayout.LayoutParams(dpToPx(THUMB_SIZE_DP), dpToPx(THUMB_SIZE_DP)).apply {
+                    setMargins(dpToPx(THUMB_MARGIN_DP), 0, dpToPx(THUMB_MARGIN_DP), 0)
+                }
+            })
+            return
+        }
+
+        files.forEach { file ->
+            // A library file matches the active file if its content was copied to live_wallpaper.*
+            // We compare by size+name stem as a heuristic (exact path differs after copy)
+            val isActive = isActiveFile(file, activeFile)
+            row.addView(buildThumbnailView(file, isActive))
+        }
+    }
+
+    private fun isActiveFile(libraryFile: File, activeFile: File?): Boolean {
+        if (activeFile == null) return false
+        // Direct path match (unlikely but possible) or same size + extension
+        return libraryFile.absolutePath == activeFile.absolutePath ||
+               (libraryFile.length() == activeFile.length() &&
+                libraryFile.extension.equals(activeFile.extension, ignoreCase = true))
+    }
+
+    private fun buildThumbnailView(file: File, isActive: Boolean): ImageView {
+        val size   = dpToPx(THUMB_SIZE_DP)
+        val margin = dpToPx(THUMB_MARGIN_DP)
+        val view = ImageView(context).apply {
+            layoutParams = LinearLayout.LayoutParams(size, size).apply {
+                setMargins(margin, 0, margin, 0)
+            }
+            scaleType   = ImageView.ScaleType.CENTER_CROP
+            clipToOutline = true
+            background  = buildThumbBackground(isActive)
+            contentDescription = file.name
+            isClickable = true
+            isFocusable = true
+        }
+
+        // Load thumbnail asynchronously
+        CoroutineScope(Dispatchers.IO).launch {
+            val bmp = extractThumbnail(file)
+            withContext(Dispatchers.Main) {
+                if (bmp != null) view.setImageBitmap(bmp)
+                else             view.setImageResource(R.drawable.ic_wallpaper)
+            }
+        }
+
+        view.setOnClickListener {
+            log("Thumbnail tapped: ${file.name}")
+            onWallpaperSelected(file)
+            hide()
+        }
+        // Long-press shows file name as a hint
+        view.setOnLongClickListener {
+            android.widget.Toast.makeText(context, file.name, android.widget.Toast.LENGTH_SHORT).show()
+            true
+        }
+        return view
+    }
+
+    /**
+     * Extract a thumbnail from any supported format.
+     * Video  → first frame via MediaMetadataRetriever
+     * GIF    → first frame via android.graphics.Movie
+     * Image  → direct BitmapFactory decode (sampled to THUMB_SIZE)
+     */
+    private fun extractThumbnail(file: File): Bitmap? {
+        return when {
+            WallpaperManagerHelper.isVideo(file) -> extractVideoFrame(file)
+            WallpaperManagerHelper.isGif(file)   -> extractGifFirstFrame(file)
+            WallpaperManagerHelper.isImage(file) -> decodeImageSampled(file)
+            else -> null
+        }
+    }
+
+    private fun extractVideoFrame(file: File): Bitmap? = try {
+        MediaMetadataRetriever().run {
+            setDataSource(file.absolutePath)
+            val bmp = getFrameAtTime(0)
+            release()
+            bmp
+        }
+    } catch (e: Exception) { log("Video thumb failed: ${e.message}"); null }
+
+    private fun extractGifFirstFrame(file: File): Bitmap? {
+        return try {
+            val movie = android.graphics.Movie.decodeFile(file.absolutePath)
+                ?: return BitmapFactory.decodeFile(file.absolutePath)
+        val bmp = Bitmap.createBitmap(
+            movie.width().coerceAtLeast(1),
+            movie.height().coerceAtLeast(1),
+            Bitmap.Config.ARGB_8888
+        )
+        movie.setTime(0)
+        movie.draw(android.graphics.Canvas(bmp), 0f, 0f)
+        bmp
+        } catch (e: Exception) { log("GIF thumb failed: ${e.message}"); null }
+    }
+
+    private fun decodeImageSampled(file: File): Bitmap? = try {
+        val opts = BitmapFactory.Options().apply {
+            inJustDecodeBounds = true
+            BitmapFactory.decodeFile(file.absolutePath, this)
+            val target = dpToPx(THUMB_SIZE_DP) * 2
+            inSampleSize = calculateInSampleSize(outWidth, outHeight, target, target)
+            inJustDecodeBounds = false
+        }
+        BitmapFactory.decodeFile(file.absolutePath, opts)
+    } catch (e: Exception) { log("Image thumb failed: ${e.message}"); null }
+
+    private fun calculateInSampleSize(w: Int, h: Int, reqW: Int, reqH: Int): Int {
+        var s = 1
+        if (h > reqH || w > reqW) {
+            val hw = h / 2; val ww = w / 2
+            while (hw / s >= reqH && ww / s >= reqW) s *= 2
+        }
+        return s
+    }
+
+    // ─── Thumbnail background ─────────────────────────────────────────────────
+
+    private fun buildThumbBackground(isActive: Boolean) = GradientDrawable().apply {
+        shape        = GradientDrawable.RECTANGLE
+        cornerRadius = dpToPx(8).toFloat()
+        setColor(Color.parseColor("#33FFFFFF"))
+        if (isActive) setStroke(dpToPx(2), Color.parseColor("#BB86FC"))
+        else          setStroke(dpToPx(1), Color.parseColor("#55FFFFFF"))
+    }
+
+    // ─── Source sheet ("+" button) ────────────────────────────────────────────
+
+    private fun setupSourceSheet(root: View) {
+        val addBtn    = root.findViewById<View>(R.id.wallpaper_add_btn)
+        val sheet     = root.findViewById<View>(R.id.wallpaper_source_sheet)
+        val srcFiles  = root.findViewById<View>(R.id.source_files)
+        val srcVs     = root.findViewById<View>(R.id.source_vsthemes)
+        val srcMotion = root.findViewById<View>(R.id.source_motionbgs)
+        val srcMoe    = root.findViewById<View>(R.id.source_moewalls)
+
+        addBtn.setOnClickListener {
+            sourceSheetOpen = !sourceSheetOpen
+            sheet.visibility = if (sourceSheetOpen) View.VISIBLE else View.GONE
+        }
+
+        srcFiles.setOnClickListener {
+            hide()
+            onFilePickerRequested()          // DockService launches the trampoline Activity
+        }
+        srcVs.setOnClickListener     { openUrl("https://vsthemes.org/en/");  hide() }
+        srcMotion.setOnClickListener { openUrl("https://motionbgs.com/");    hide() }
+        srcMoe.setOnClickListener    { openUrl("https://moewalls.com/");     hide() }
+    }
+
+    // ─── URL helper ──────────────────────────────────────────────────────────
+
+    private fun openUrl(url: String) {
+        try {
+            context.startActivity(
+                android.content.Intent(android.content.Intent.ACTION_VIEW,
+                    Uri.parse(url)).apply {
+                    addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
+                })
+        } catch (_: Exception) {
+            Toast.makeText(context, "ما قدر يفتح المتصفح", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    // ─── Helpers ─────────────────────────────────────────────────────────────
+
+    private fun dpToPx(dp: Int) = Utils.dpToPx(context, dp)
+    private fun log(msg: String) = Log.d(TAG, msg)
+}

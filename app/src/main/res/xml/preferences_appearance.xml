@@ -1,0 +1,68 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/look_and_feel">
+
+        <!-- Bubble color mode: Material You (auto) or Custom -->
+        <ListPreference
+            android:defaultValue="material_u"
+            android:entries="@array/bubble_modes"
+            android:entryValues="@array/bubble_mode_values"
+            android:key="bubble_mode"
+            android:title="@string/bubble_mode_title"
+            android:summary="@string/bubble_mode_summary" />
+
+        <!-- Custom bubble controls — visible only when bubble_mode = custom -->
+        <Preference
+            android:key="bubble_color_picker"
+            android:title="@string/bubble_color_title"
+            android:summary="@string/bubble_color_summary" />
+
+        <ListPreference
+            android:defaultValue="material_u"
+            android:entries="@array/themes"
+            android:entryValues="@array/theme_values"
+            android:key="theme"
+            android:title="@string/theme_title" />
+
+
+        <Preference
+            android:key="theme_main_color"
+            android:summary="@string/theme_main_color_summary"
+            android:title="@string/theme_main_color_title" />
+
+        <Preference
+            android:key="dock_layout"
+            android:title="@string/dock_layout" />
+
+        <ListPreference
+            android:defaultValue="circle"
+            android:entries="@array/icon_shapes"
+            android:entryValues="@array/icon_shapes_values"
+            android:key="icon_shape"
+            android:title="@string/icon_shape_title" />
+
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="round_dock"
+            android:title="@string/round_dock" />
+
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="single_line_labels"
+            android:title="@string/single_line_labels" />
+
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            android:key="tint_indicators"
+            android:title="@string/tint_indicators_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/behaviour">
+        <SwitchPreferenceCompat
+            android:key="lock_landscape"
+            android:title="@string/lock_landscape_title"
+            android:summary="@string/lock_landscape_summary"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

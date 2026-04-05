@@ -1,0 +1,11 @@
+// احذف كل شيء قديم (buildscript) واستخدم هذا فقط:
+plugins {
+    id 'com.android.application' version '8.7.0' apply false
+    id 'com.android.library' version '8.7.0' apply false
+    id 'org.jetbrains.kotlin.android' version '1.9.24' apply false
+}
+
+// مهمة التنظيف (تعديل بسيط لتناسب النسخ الجديدة)
+tasks.register('clean', Delete) {
+    delete rootProject.layout.buildDirectory
+}

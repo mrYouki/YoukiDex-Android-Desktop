@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Windows 11 style: زجاج مثلج شفاف مع radius مناسب -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="20dp"/>
+    <!-- #26FFFFFF = أبيض 15% شفافية — frosted glass أصيل -->
+    <solid android:color="#26FFFFFF"/>
+</shape>

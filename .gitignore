@@ -1,0 +1,13 @@
+local.properties
+secrets.xml
+*.jks
+*.keystore
+
+build/
+app/build/
+.androidide/
+.gradle/
+ 
+*.log
+*.temp
+.git/

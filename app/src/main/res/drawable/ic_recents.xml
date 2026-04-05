@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Win11 Task View: مستطيلات متراكبة مثل ويندوز 11 تماماً -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp"
+    android:viewportWidth="24" android:viewportHeight="24">
+    <!-- النافذة الخلفية -->
+    <path android:fillColor="#FFFFFFFF"
+        android:pathData="M3,6 Q3,4 5,4 H15 Q17,4 17,6 V14 Q17,16 15,16 H5 Q3,16 3,14 Z
+                          M5,6 V14 H15 V6 Z"/>
+    <!-- النافذة الأمامية -->
+    <path android:fillColor="#FFFFFFFF"
+        android:pathData="M8,9 Q8,7.5 9.5,7.5 H19 Q20.5,7.5 20.5,9 V18 Q20.5,19.5 19,19.5 H9.5 Q8,19.5 8,18 Z
+                          M9.5,9 V18 H19 V9 Z"/>
+</vector>

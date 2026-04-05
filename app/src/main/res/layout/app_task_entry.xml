@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Win11-style dock app entry: أيقونة أوضح مع indicator أنيق -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?android:attr/selectableItemBackground"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="6dp">
+
+        <ImageView
+            android:layout_height="48dp"
+            android:layout_width="48dp"
+            android:id="@+id/icon_iv"
+            android:layout_centerInParent="true"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"/>
+
+        <!-- Badge عدد النوافذ — Win11 style: دائري صغير في الزاوية -->
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:background="@drawable/circle"
+            android:textSize="9sp"
+            android:textColor="#FFFFFF"
+            android:alpha="0"
+            android:elevation="4dp"
+            android:id="@+id/task_count_badge"
+            android:padding="3dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:translationX="4dp"
+            android:translationY="-2dp"/>
+
+    </RelativeLayout>
+
+    <!-- Running indicator — Win11: شريط قصير مضيء تحت الأيقونة -->
+    <View
+        android:background="@drawable/running_indicator"
+        android:layout_height="3dp"
+        android:layout_width="6dp"
+        android:id="@+id/running_indicator"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="4dp"
+        android:alpha="0"/>
+
+</LinearLayout>

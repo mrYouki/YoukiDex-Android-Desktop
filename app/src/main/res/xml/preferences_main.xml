@@ -1,0 +1,49 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" 
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.youki.dex.preferences.PreferenceHeader
+		android:icon="@drawable/ic_appearance"
+		android:title="@string/appearance" 
+		app:fragment="com.youki.dex.fragments.AppearancePreferences" />
+    <com.youki.dex.preferences.PreferenceHeader
+		android:icon="@drawable/ic_apps_menu" 
+		app:fragment="com.youki.dex.fragments.AppMenuPreferences" 
+		android:title="@string/app_menu"  />
+	<com.youki.dex.preferences.PreferenceHeader
+        android:icon="@drawable/ic_dock"
+        android:fragment="com.youki.dex.fragments.DockPreferences"
+        android:title="@string/dock" />
+	<com.youki.dex.preferences.PreferenceHeader
+        android:icon="@drawable/ic_desktop"
+        android:fragment="com.youki.dex.fragments.DesktopPreferences"
+        android:title="@string/desktop" />
+    <com.youki.dex.preferences.PreferenceHeader
+        android:icon="@drawable/ic_star"
+        android:fragment="com.youki.dex.fragments.DefaultAppsPreferences"
+        android:title="@string/default_apps" />
+    <com.youki.dex.preferences.PreferenceHeader
+        android:icon="@drawable/ic_keyboard"
+        android:fragment="com.youki.dex.fragments.KeyboardPreferences"
+        android:title="@string/keyboard" />
+	<com.youki.dex.preferences.PreferenceHeader
+        android:icon="@drawable/ic_corners"
+        android:fragment="com.youki.dex.fragments.HotCornersPreferences"
+        android:title="@string/hot_corners" />
+	<com.youki.dex.preferences.PreferenceHeader
+        android:icon="@drawable/ic_notifications"
+        android:fragment="com.youki.dex.fragments.NotificationPreferences"
+        android:title="@string/notifications" />
+    <com.youki.dex.preferences.PreferenceHeader
+        android:icon="@drawable/ic_sounds"
+        android:fragment="com.youki.dex.fragments.SoundsPreferences"
+        android:title="@string/sounds" />
+    <com.youki.dex.preferences.PreferenceHeader
+        android:icon="@drawable/ic_advanced"
+        android:fragment="com.youki.dex.fragments.AdvancedPreferences"
+        android:title="@string/advanced" />
+    <com.youki.dex.preferences.PreferenceHeader
+        android:icon="@drawable/ic_info"
+        android:fragment="com.youki.dex.fragments.HelpAboutPreferences"
+        android:title="@string/help_and_about" />
+
+</PreferenceScreen>

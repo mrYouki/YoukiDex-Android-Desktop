@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/qs_panel_root"
+    android:elevation="20dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="6dp"
+    android:minWidth="300dp"
+    android:background="@android:color/transparent">
+
+    <LinearLayout
+        android:id="@+id/qs_brightness_row"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/btn_bubble_rect"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_screen"
+            android:layout_marginEnd="14dp"/>
+
+        <SeekBar
+            android:id="@+id/qs_brightness_sb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="255"
+            android:progress="128"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/qs_volume_row"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/btn_bubble_rect"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_volume"
+            android:layout_marginEnd="14dp"/>
+
+        <SeekBar
+            android:id="@+id/qs_volume_sb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="15"
+            android:progress="8"/>
+    </LinearLayout>
+
+</LinearLayout>

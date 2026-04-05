@@ -1,0 +1,26 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.youki.dex.preferences.AppChooserPreference
+        android:title="@string/app_browser_title"
+        android:key="app_browser"/>
+    <com.youki.dex.preferences.AppChooserPreference
+        android:title="@string/app_files_title"
+        android:key="app_files"/>
+    <com.youki.dex.preferences.AppChooserPreference
+        android:title="@string/app_music_title"
+        android:key="app_music"/>
+    <com.youki.dex.preferences.AppChooserPreference
+        android:title="@string/app_movies_title"
+        android:key="app_movies"/>
+    <com.youki.dex.preferences.AppChooserPreference
+        android:title="@string/app_assistant_title"
+        android:key="app_assistant"/>
+    <com.youki.dex.preferences.AppChooserPreference
+        android:title="@string/app_clock_title"
+        android:key="app_clock"/>
+    <com.youki.dex.preferences.AppChooserPreference
+        android:title="@string/app_terminal_title"
+        android:key="app_terminal"/>
+    <com.youki.dex.preferences.AppChooserPreference
+        android:title="@string/app_rec_title"
+        android:key="app_rec"/>
+</PreferenceScreen>
