@@ -162,6 +162,62 @@ internal object PerfectServer {
             dock?.applyNotifBtnColor(color)
         }
     }
+
+    // ── Flashlight ───────────────────────────────────────────────────────────
+    // Lives here (rather than on either service) because two different UIs
+    // toggle it — the QS tile inside NotificationService's panel and the
+    // hot-corner/long-press action in DockService — and both need to agree on
+    // whether the torch is actually on. Backed by CameraManager's own
+    // TorchCallback instead of a plain bool, so it stays correct even if the
+    // torch was switched on/off by something outside this app.
+    @Volatile var torchOn = false
+        private set
+    private var torchCameraId: String? = null
+    private var torchCallback: android.hardware.camera2.CameraManager.TorchCallback? = null
+
+    /** Idempotent — safe to call from both services' onCreate(); only the first call does anything. */
+    fun ensureTorchTracking(context: android.content.Context) {
+        if (torchCameraId != null) return
+        try {
+            val cameraManager = context.applicationContext
+                .getSystemService(android.hardware.camera2.CameraManager::class.java) ?: return
+            val id = cameraManager.cameraIdList.firstOrNull { camId ->
+                // A single problem camera ID (e.g. a logical/hidden one some OEMs
+                // expose) shouldn't abort the whole scan — just skip it.
+                try {
+                    cameraManager.getCameraCharacteristics(camId)
+                        .get(android.hardware.camera2.CameraCharacteristics.FLASH_INFO_AVAILABLE) == true
+                } catch (e: Exception) { false }
+            } ?: return
+            torchCameraId = id
+            val callback = object : android.hardware.camera2.CameraManager.TorchCallback() {
+                override fun onTorchModeChanged(cameraId: String, enabled: Boolean) {
+                    if (cameraId == id) torchOn = enabled
+                }
+                override fun onTorchModeUnavailable(cameraId: String) {
+                    if (cameraId == id) torchOn = false
+                }
+            }
+            cameraManager.registerTorchCallback(callback, null)
+            torchCallback = callback
+        } catch (e: Exception) {}
+    }
+
+    /** Flips the torch and returns the new state. Used by the QS tile and the hot-corner action alike. */
+    fun toggleFlashlight(context: android.content.Context): Boolean {
+        val id = torchCameraId ?: return torchOn
+        return try {
+            val cameraManager = context.applicationContext
+                .getSystemService(android.hardware.camera2.CameraManager::class.java) ?: return torchOn
+            val next = !torchOn
+            cameraManager.setTorchMode(id, next)
+            torchOn = next // onTorchModeChanged will also confirm this, but callers want it immediately
+            next
+        } catch (e: Exception) {
+            torchOn = false
+            false
+        }
+    }
 }
 
 
@@ -316,6 +372,7 @@ class DockService : AccessibilityService(), OnSharedPreferenceChangeListener, On
         if (sharedPreferences.getString("icon_pack", "").orEmpty().isNotEmpty()) {
             iconPackUtils = IconPackUtils(this)
         }
+        PerfectServer.ensureTorchTracking(this)
     }
 
     override fun onServiceConnected() {
@@ -3655,6 +3712,8 @@ class DockService : AccessibilityService(), OnSharedPreferenceChangeListener, On
             NAV_LONG_ACTIONS[2] -> launchAssistant()
             NAV_LONG_ACTIONS[3] -> lockScreen()
             NAV_LONG_ACTIONS[4] -> performGlobalAction(GLOBAL_ACTION_TOGGLE_SPLIT_SCREEN)
+            NAV_LONG_ACTIONS[5] -> takeScreenshot()
+            NAV_LONG_ACTIONS[6] -> PerfectServer.toggleFlashlight(this)
         }
     }
 
@@ -4017,6 +4076,7 @@ class NotificationService : NotificationListenerService(), OnNotificationClickLi
         sharedPreferences.registerOnSharedPreferenceChangeListener(this)
         preferLastDisplay = sharedPreferences.getBoolean("prefer_last_display", false)
         context = DeviceUtils.getDisplayContext(this, preferLastDisplay)
+        PerfectServer.ensureTorchTracking(this)
         actionsHeight = Utils.dpToPx(context, 20)
         windowManager = context.getSystemService(WINDOW_SERVICE) as WindowManager
         notificationLayoutParams = Utils.makeWindowParams(
@@ -4869,9 +4929,12 @@ class NotificationService : NotificationListenerService(), OnNotificationClickLi
         }
 
         // ── Flashlight ─────────────────────────────────────────────────────────
-        var isTorchOn = false
-        val cameraManager = getSystemService(android.hardware.camera2.CameraManager::class.java)
-
+        // FIX: used to track its own local `isTorchOn`, which reset to false every
+        // time the QS panel was rebuilt (i.e. every open) regardless of whether the
+        // torch was actually still on — so the tile could show "off" for a torch
+        // that was in fact lit. Now backed by PerfectServer's shared torchOn/
+        // toggleFlashlight(), which CameraManager's own TorchCallback keeps honest,
+        // and which the hot-corner "flashlight" action (in DockService) shares too.
         fun setupFlashlightSlot(v: QsSlotViews) {
             v.title.setText(R.string.flashlight)
 
@@ -4889,19 +4952,11 @@ class NotificationService : NotificationListenerService(), OnNotificationClickLi
                 v.subtitle.visibility = android.view.View.GONE
             }
 
-            applyTorchVisual(isTorchOn)
-            refreshQsTileStates.add { applyTorchVisual(isTorchOn) }
+            applyTorchVisual(PerfectServer.torchOn)
+            refreshQsTileStates.add { applyTorchVisual(PerfectServer.torchOn) }
 
             v.tile.setOnClickListener {
-                try {
-                    val cameraId = cameraManager.cameraIdList.firstOrNull() ?: return@setOnClickListener
-                    isTorchOn = !isTorchOn
-                    cameraManager.setTorchMode(cameraId, isTorchOn)
-                    applyTorchVisual(isTorchOn)
-                } catch (e: Exception) {
-                    isTorchOn = false
-                    applyTorchVisual(false)
-                }
+                applyTorchVisual(PerfectServer.toggleFlashlight(context))
             }
         }
 

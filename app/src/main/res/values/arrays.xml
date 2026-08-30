@@ -117,6 +117,8 @@
         <item>@string/launch_assistant</item>
         <item>@string/lock_device</item>
         <item>@string/toggle_split_screen</item>
+        <item>@string/screenshot</item>
+        <item>@string/flashlight</item>
     </string-array>
  
             <string-array name="default_color_values" translatable="false">

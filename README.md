@@ -63,7 +63,7 @@ For release notes and version history, check the [GitHub Releases page](https://
 - 3 ready-made dock presets (Minimal / Default / Gesture) that set up everything — nav buttons, quick settings, running-app limits — in one tap, instead of tuning 15 different settings by hand
 - Resizable floating windows for any app, plus real window tiling (maximize, snap left/right/top/bottom)
 - Multiple app windows group under one dock icon, the way Windows or macOS does it
-- Hot corners (top-right / bottom-right, each mappable to its own action)
+- Hot corners (top-right / bottom-right, each mappable to its own action — notifications, assistant, lock, split screen, screenshot, or flashlight toggle)
 - Multi-display support
 - Mouse right-click and hardware keyboard shortcuts work the same as long-press/touch
 - An inline calculator in the app search — type "12+7", get a tappable "19"
