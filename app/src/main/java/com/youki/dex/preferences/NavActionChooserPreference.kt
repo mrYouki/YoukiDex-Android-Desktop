@@ -10,7 +10,7 @@ import com.google.android.material.materialswitch.MaterialSwitch
 import com.youki.dex.R
 import androidx.core.content.edit
 
-val NAV_LONG_ACTIONS = listOf("none", "notifications", "assistant", "lock", "split")
+val NAV_LONG_ACTIONS = listOf("none", "notifications", "assistant", "lock", "split", "screenshot", "flashlight")
 
 class NavActionChooserPreference(private val context: Context, attrs: AttributeSet?) :
     Preference(context, attrs) {
